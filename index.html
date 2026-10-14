@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>FertAmapá - Cálculos de Calagem e Adubação Mineral de NPK</title>
+  <style>
+    :root {
+      --primary-color: #2e7d32;
+      --primary-hover: #1b5e20;
+      --secondary-color: #f5f5f5;
+      --accent-color: #81c784;
+      --text-color: #333;
+      --border-color: #ccc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Tela de Apresentação (Hero) */
+    .hero-container {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: white;
+      text-align: center;
+      padding: 20px 15px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #2e7d32;
+      filter: blur(6px);
+      transform: scale(1.08);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 30px 20px;
+      border-radius: 20px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      margin-bottom: 25px;
+      font-weight: 300;
+      opacity: 0.95;
+      line-height: 1.4;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      align-items: center;
+    }
+
+    .btn-square {
+      width: 100%;
+      max-width: 280px;
+      height: 70px;
+      background-color: rgba(255, 255, 255, 0.95);
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .btn-square svg {
+      width: 32px;
+      height: 32px;
+      fill: var(--primary-color);
+      transition: transform 0.2s ease;
+    }
+
+    .btn-square:active {
+      background-color: var(--primary-color);
+      color: white;
+      transform: scale(0.98);
+    }
+
+    .btn-square:active svg {
+      fill: white;
+    }
+
+    /* Interface Principal */
+    .app-header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .app-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      background-color: #ffffff;
+      color: var(--primary-color);
+      border: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: background-color 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .btn-action:hover {
+      background-color: #f0f0f0;
+    }
+
+    .btn-action svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--primary-color);
+    }
+
+    /* Navegação das Abas */
+    .nav-tabs {
+      display: flex;
+      background-color: #e0e0e0;
+      border-bottom: 2px solid var(--border-color);
+      padding: 0 5px;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-button {
+      padding: 12px 16px;
+      border: none;
+      background: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border-bottom: 3px solid transparent;
+      flex-shrink: 0;
+    }
+
+    .tab-button.active {
+      color: var(--primary-color);
+      border-bottom-color: var(--primary-color);
+      background-color: white;
+    }
+
+    .main-content {
+      padding: 15px 12px;
+      width: 100%;
+      max-width: 650px;
+      margin: 0 auto;
+      flex: 1;
+    }
+
+    .tab-content {
+      display: none;
+      background: white;
+      padding: 18px 14px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .tab-content.active {
+      display: block !important;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .form-group-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+    }
+
+    .sub-group-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      background-color: #f1f8e9;
+      padding: 5px 8px;
+      border-radius: 4px;
+      margin-top: 6px;
+      border-left: 3px solid var(--primary-color);
+    }
+
+    .side-bar-container {
+      display: flex;
+      flex-direction: row;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e0e0e0;
+      background-color: #fafafa;
+    }
+
+    .side-bar-label {
+      background-color: var(--primary-color);
+      color: white;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      text-align: center;
+      font-weight: bold;
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      padding: 10px 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .side-bar-content {
+      flex: 1;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: #ffffff;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: #444;
+    }
+
+    input, select {
+      padding: 7px 9px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 0.88rem;
+      outline: none;
+      width: 100%;
+      background-color: #fff;
+    }
+
+    input[readonly] {
+      background-color: #e9ecef;
+      color: #495057;
+      font-weight: bold;
+      cursor: not-allowed;
+      border-color: #ced4da;
+    }
+
+    input:focus:not([readonly]), select:focus {
+      border-color: var(--primary-color);
+    }
+
+    .table-container {
+      overflow-x: auto;
+      margin-top: 12px;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: auto;
+    }
+
+    th, td {
+      border: 1px solid #e0e0e0;
+      padding: 6px 8px;
+      font-size: 0.8rem;
+      text-align: left;
+      word-break: break-word;
+    }
+
+    th {
+      background-color: #f1f8e9;
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+
+    .table-compact th,
+    .table-compact td {
+      padding: 5px 6px;
+      font-size: 0.76rem;
+    }
+
+    #tab-INSUMOS table th:nth-child(3),
+    #tab-INSUMOS table td:nth-child(3) {
+      text-align: center;
+    }
+
+    .input-table-price {
+      padding: 5px 6px;
+      font-size: 0.8rem;
+      border: 1px solid var(--primary-color);
+      border-radius: 4px;
+      width: 80px;
+      font-weight: bold;
+      color: #1b5e20;
+      background-color: #f1f8e9;
+      text-align: center;
+    }
+
+    .info-card {
+      background-color: #e8f5e9;
+      border-left: 4px solid var(--primary-color);
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+    }
+
+    .info-card p {
+      margin-bottom: 6px;
+      line-height: 1.35;
+      font-size: 0.82rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 12px;
+      background-color: #e0e0e0;
+      font-size: 0.75rem;
+      color: #666;
+      margin-top: auto;
+    }
+
+    @media print {
+      body { background-color: white !important; color: black !important; }
+      .hero-container, .app-header, .nav-tabs, footer, .header-actions { display: none !important; }
+      #app { display: flex !important; }
+      .main-content { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
+      .tab-content { box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; }
+      input, select { border: none !important; background: transparent !important; padding: 0 !important; }
+      .side-bar-container { border: 1px solid #ccc !important; }
+      .table-container { border: none !important; }
+      th, td { border: 1px solid #999 !important; }
+      .print-only { display: block !important; }
+    }
+
+    .print-only { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div id="hero" class="hero-container">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">FertAmapá</h1>
+      <p class="hero-subtitle">Sistema de Cálculos para Calagem e Adubação Mineral de NPK</p>
+      
+      <div class="hero-buttons">
+        <button type="button" class="btn-square" id="btn-start-fert" onclick="openModule('FertAmapá')">
+          <svg viewBox="0 0 24 24"><path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M19,19H5V5H19V19M6.25,7.72H11.25V9.22H6.25V7.72M12.75,7.72H17.75V9.22H12.75V7.72M6.25,11.72H11.25V13.22H6.25V11.72M12.75,11.72H17.75V13.22H12.75V11.72M6.25,15.72H11.25V17.22H6.25V15.72M12.75,15.72H17.75V17.22H12.75V15.72Z"/></svg>
+          Calagem e Adubação
+        </button>
+        
+        <button type="button" class="btn-square" id="btn-start-insumos" onclick="openModule('INSUMOS')">
+          <svg viewBox="0 0 24 24"><path d="M7,18C5.9,18 5,18.9 5,20C5,21.1 5.9,22 7,22C8.1,22 9,21.1 9,20C9,18.9 8.1,18 7,18M1,2V4H3L6.6,11.59L5.25,14.04C5.09,14.32 5,14.65 5,15C5,16.1 5.9,17 7,17H19V15H7.42C7.28,15 7.17,14.89 7.17,14.75L7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.59 17.3,11.97L20.88,5.5C20.96,5.34 21,5.17 21,5C21,4.45 20.55,4 20,4H5.21L4.27,2H1M17,18C15.9,18 15,18.9 15,20C15,21.1 15.9,22 17,22C18.1,22 19,21.1 19,20C19,18.9 18.1,18 17,18Z"/></svg>
+          Insumos
+        </button>
+
+        <button type="button" class="btn-square" id="btn-start-dizeres" onclick="openModule('DIZERES')">
+          <svg viewBox="0 0 24 24">
+            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M8,12V14H16V12H8M8,16V18H13V16H8Z"/>
+          </svg>
+          Dizeres Técnicos
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="app" style="display: none; flex-direction: column; min-height: 100vh;">
+    <header class="app-header">
+      <div class="app-title" onclick="showHero()">🌱 FertAmapá</div>
+      <div class="header-actions">
+        <button type="button" class="btn-action" onclick="window.print()" title="Imprimir ou Salvar PDF">
+          <svg viewBox="0 0 24 24"><path d="M19,8H5C3.34,8 2,9.34 2,11V17H6V21H18V17H22V11C22,9.34 20.66,8 19,8M16,19H8V15H16V19M19,12C18.45,12 18,11.55 18,11C18,10.45 18.45,10 19,10C19.55,10 20,10.45 20,11C20,11.55 19.55,12 19,12M18,3H6V7H18V3Z"/></svg>
+          PDF
+        </button>
+        <button type="button" class="btn-action" onclick="compartilharRelatorio()" title="Compartilhar Relatório">
+          <svg viewBox="0 0 24 24"><path d="M18,16.08C17.24,16.08 16.56,16.38 16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 8.91,11.3L15.96,7.19C16.5,7.69 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 0,0 18,2A3,3 0 0,0 15,5C15,5.24 15.04,5.47 15.09,5.7L8.04,9.81C7.5,9.31 6.79,9 6,9A3,3 0 0,0 3,12A3,3 0 0,0 6,15C6.79,15 7.5,14.69 8.04,14.19L15.16,18.34C15.11,18.55 15.08,18.77 15.08,19A3,3 0 0,0 18.08,22A3,3 0 0,0 21.08,19A3,3 0 0,0 18,16.08Z"/></svg>
+          Enviar
+        </button>
+        <button type="button" onclick="showHero()" style="background:none; border:1px solid white; color:white; padding: 5px 8px; border-radius:4px; font-size:0.8rem; cursor:pointer; margin-left: 2px;">
+          Início
+        </button>
+      </div>
+    </header>
+
+    <nav class="nav-tabs">
+      <button type="button" class="tab-button active" onclick="switchTab('FertAmapá')">CÁLCULOS</button>
+      <button type="button" class="tab-button" onclick="switchTab('INSUMOS')">INSUMOS</button>
+      <button type="button" class="tab-button" onclick="switchTab('DIZERES')">DIZERES TÉCNICOS</button>
+    </nav>
+
+    <main class="main-content">
+      <!-- ABA FertAmapá -->
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Embrapa_-_Marca.png" alt="Marca Embrapa" style="width: 150px; height: auto; display: block; margin: 0 auto 20px auto;">
+      <section id="tab-FertAmapá" class="tab-content active">
+        <h2>Calagem e Adubação Mineral por Cultura</h2>
+        
+        <div class="form-grid">
+          <div class="side-bar-container">
+            <div class="side-bar-label">CALAGEM</div>
+            <div class="side-bar-content">
+              <div class="form-group">
+                <label for="cultura">Cultura Desejada:</label>
+                <select id="cultura" onchange="atualizarCultura()">
+                  <option value="ABACAXI" selected>ABACAXI</option>
+                  <option value="AÇAÍ">AÇAÍ</option>
+                  <option value="BANANA">BANANA</option>
+                  <option value="CACAU">CACAU</option>
+                  <option value="CAFÉ CANÉFORA">CAFÉ CANÉFORA</option>
+                  <option value="CITROS">CITROS</option>
+                  <option value="CUPUAÇU">DENDÊ</option>
+                  <option value="FEIJÃO-CAUPI">FEIJÃO-CAUPI</option>
+                  <option value="MANDIOCA">MANDIOCA</option>
+                  <option value="MARACUJÁ">MARACUJÁ</option>
+                  <option value="MILHO">MILHO</option>
+                  <option value="SOJA">SOJA</option>
+                  <option value="OUTRAS CULTURAS">OUTRAS CULTURAS</option>
+                </select>
+              </div>
+
+              <div class="sub-group-title">1. Método Elevação da Saturação por Bases</div>
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="v2_input">V2 Desejada (%):</label>
+                  <input type="text" id="v2_input" value="60%" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="v1">V1 Atual (%):</label>
+                  <input type="number" id="v1" value="6.0" step="0.1" oninput="calcular()">
+                </div>
+                <div class="form-group">
+                  <label for="ctc">CTC (pH 7,0):</label>
+                  <input type="number" id="ctc" value="2.1" step="0.1" oninput="calcular()">
+                </div>
+              </div>
+
+              <div class="sub-group-title">2. Método Neutralização do Al e Elevação de Ca+Mg</div>
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="solo_al">Al³⁺ (cmol_c/dm³):</label>
+                  <input type="number" id="solo_al" value="0.8" step="0.1" oninput="calcular()">
+                </div>
+                <div class="form-group">
+                  <label for="solo_ca">Ca (cmol_c/dm³):</label>
+                  <input type="number" id="solo_ca" value="0.6" step="0.1" oninput="calcular()">
+                </div>
+                <div class="form-group">
+                  <label for="solo_mg">Mg (cmol_c/dm³):</label>
+                  <input type="number" id="solo_mg" value="0.6" step="0.1" oninput="calcular()">
+                </div>
+              </div>
+
+              <div class="sub-group-title">3. Especificação do Insumo</div>
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="prnt">PRNT Calcário (%):</label>
+                  <input type="number" id="prnt" value="83.0" step="0.1" oninput="calcular()">
+                </div>
+              </div>
+
+              <div class="sub-group-title">4. Resultados da Calagem por Método Comercial (kg/ha)</div>
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="nc_sat_bases_kgha">Saturação por Bases:</label>
+                  <input type="text" id="nc_sat_bases_kgha" value="0.00 kg/ha" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="nc_al_camg_kgha">Neutralização Al + Ca/Mg:</label>
+                  <input type="text" id="nc_al_camg_kgha" value="0.00 kg/ha" readonly>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div style="margin-top: 10px;">
+            <div class="section-title">🌱 Análise de Solo & Adubação Sugerida</div>
+          </div>
+
+          <div class="side-bar-container">
+            <div class="side-bar-label">FONTES MINERAIS</div>
+            <div class="side-bar-content">
+              <div class="sub-group-title">1. Resultados da Análise de Solo (0-20 cm)</div>
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="soloN">N no Solo:</label>
+                  <input type="text" id="soloN" value="Não estimado" readonly style="font-size:0.8rem;">
+                </div>
+                <div class="form-group">
+                  <label for="soloP">P (mg/dm³):</label>
+                  <input type="number" id="soloP" value="5.4" step="0.1" oninput="calcular()">
+                </div>
+                <div class="form-group">
+                  <label for="soloK">K (cmol_c/dm³):</label>
+                  <input type="number" id="soloK" value="0.39" step="0.01" oninput="calcular()">
+                </div>
+              </div>
+
+              <div class="sub-group-title">2. Recomendação Teórica para a Cultura</div>
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="dose_n">N (kg/ha):</label>
+                  <input type="number" id="dose_n" value="120" step="1" oninput="calcular()">
+                </div>
+                <div class="form-group">
+                  <label for="dose_p2o5">P₂O₅ (kg/ha):</label>
+                  <input type="number" id="dose_p2o5" value="80" step="1" oninput="calcular()">
+                </div>
+                <div class="form-group">
+                  <label for="dose_k2o">K₂O (kg/ha):</label>
+                  <input type="number" id="dose_k2o" value="320" step="1" oninput="calcular()">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 20px; color: var(--primary-color);">Diagnóstico e Doses Reais Ajustadas com Reposição Mineral</h3>
+        <div class="table-container">
+          <table class="table-compact">
+            <thead>
+              <tr>
+                <th style="width:15%;">Nutriente</th>
+                <th style="width:20%;">Estimativa Solo (kg/ha)</th>
+                <th style="width:40%;">Status / Interpretação</th>
+                <th style="width:25%;">Dose Real Ajustada</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>N</strong></td>
+                <td>-</td>
+                <td id="diag-status-n">Não Analisado em Rotina</td>
+                <td id="diag-real-n">0.0 kg/ha</td>
+              </tr>
+              <tr>
+                <td><strong>P₂O₅</strong></td>
+                <td id="diag-estimativa-p">0.0 kg/ha</td>
+                <td id="diag-status-p">-</td>
+                <td id="diag-real-p">0.0 kg/ha</td>
+              </tr>
+              <tr>
+                <td><strong>K₂O</strong></td>
+                <td id="diag-estimativa-k">0.0 kg/ha</td>
+                <td id="diag-status-k">-</td>
+                <td id="diag-real-k">0.0 kg/ha</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="padding: 4px;">
+            <small style="color: green;">&nbsp;Para mais informações consulte os Dizeres Técnicos.</small>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 20px; color: var(--primary-color);">Resultados da Calagem</h3>
+        <div class="table-container">
+          <table class="table-compact">
+            <thead>
+              <tr>
+                <th>Parâmetro</th>
+                <th>Valor Calculado</th>
+                <th>Custo Estimado (R$)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Saturação de Bases Recomendada (V2 %)</td>
+                <td id="res-v2">60%</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Necessidade de Calcário (PRNT 100%)</td>
+                <td id="res-nc100">0.00 kg/ha</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Calcário Comercial Requerido [Maior valor entre métodos]</td>
+                <td id="res-ncprnt">0.00 kg/ha</td>
+                <td id="res-custo-calcario">R$ 0,00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="margin-top: 20px; color: var(--primary-color);">Resultados dos Fertilizantes Calculados Individualmente</h3>
+        <div class="table-container">
+          <table class="table-compact">
+            <thead>
+              <tr>
+                <th>Fertilizante Comercial</th>
+                <th>Quantidade (kg/ha)</th>
+                <th>Valor (R$)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sulfato de Amônio</td>
+                <td id="fc-samonio-peso">0.00 kg/ha</td>
+                <td id="fc-samonio-valor">R$ 0,00</td>
+              </tr>
+              <tr>
+                <td>Ureia</td>
+                <td id="fc-ureia-peso">0.00 kg/ha</td>
+                <td id="fc-ureia-valor">R$ 0,00</td>
+              </tr>
+              <tr>
+                <td>Superfosfato Simples (SFS)</td>
+                <td id="fc-sfs-peso">0.00 kg/ha</td>
+                <td id="fc-sfs-valor">R$ 0,00</td>
+              </tr>
+              <tr>
+                <td>Superfosfato Triplo (SFT)</td>
+                <td id="fc-sft-peso">0.00 kg/ha</td>
+                <td id="fc-sft-valor">R$ 0,00</td>
+              </tr>
+              <tr>
+                <td>Cloreto de Potássio (KCl)</td>
+                <td id="fc-kcl-peso">0.00 kg/ha</td>
+                <td id="fc-kcl-valor">R$ 0,00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="margin-top: 20px; color: var(--primary-color);">Formulação e Adubação Agrupada</h3>
+        <div class="table-container">
+          <table class="table-compact">
+            <thead>
+              <tr>
+                <th>Grupo / Fontes Utilizadas</th>
+                <th>Formulação N-P-K</th>
+                <th>Qtd (kg/ha)</th>
+                <th>Custo Total (R$)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Grupo 1:</strong> Sulfato de Amônio + SFT + KCl</td>
+                <td id="g1-formula" style="text-align: center;">0 - 0 - 0</td>
+                <td id="g1-qtd">0,00 kg/ha</td>
+                <td id="g1-custo">R$ 0,00</td>
+              </tr>
+              <tr>
+                <td><strong>Grupo 2:</strong> Ureia + SFS + KCl</td>
+                <td id="g2-formula" style="text-align: center;">0 - 0 - 0</td>
+                <td id="g2-qtd">0,00 kg/ha</td>
+                <td id="g2-custo">R$ 0,00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+     <!-- ABA INSUMOS -->
+<section id="tab-INSUMOS" class="tab-content">
+  <h2>Preços de Mercado dos Insumos</h2>
+  <div class="table-container">
+    <table class="table-compact">
+      <thead>
+        <tr>
+          <th>Insumo</th>
+          <th>Especificação</th>
+          <th>Preço / kg (R$)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Calcário Dolomítico</td>
+          <td>PRNT Corrigido</td>
+          <td><input type="number" class="input-table-price" id="preco_calcario" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
+        </tr>
+        <tr>
+          <td>Sulfato de Amônio</td>
+          <td>21% N, 24% S</td>
+          <td><input type="number" class="input-table-price" id="preco_samonio" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
+        </tr>
+        <tr>
+          <td>Ureia</td>
+          <td>45% N</td>
+          <td><input type="number" class="input-table-price" id="preco_ureia" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
+        </tr>
+        <tr>
+          <td>Superfosfato Simples</td>
+          <td>18% P₂O₅, 16% Ca, 10% S</td>
+          <td><input type="number" class="input-table-price" id="preco_sfs" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
+        </tr>
+        <tr>
+          <td>Superfosfato Triplo</td>
+          <td>43% P₂O₅, 10% Ca</td>
+          <td><input type="number" class="input-table-price" id="preco_sft" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
+        </tr>
+        <tr>
+          <td>Cloreto de Potássio</td>
+          <td>60% K₂O</td>
+          <td><input type="number" class="input-table-price" id="preco_kcl" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+      <!-- ABA DIZERES -->
+      <section id="tab-DIZERES" class="tab-content">
+        <h2>Dizeres Técnicos e Recomendações</h2>
+        <div class="info-card">
+          <p>📌 <strong>Necessidades nutricionais (N, P₂O₅ e K₂O):</strong> As dosagens teóricas sugeridas para a cultura aplicam-se exclusivamente à etapa de plantio, visando o seu estabelecimento e desenvolvimento inicial com base em tabelas oficiais e na literatura científica. As demais e subsequentes adubações ficam condicionadas ao acompanhamento contínuo do estado nutricional das plantas e do solo ao longo do ciclo. Contudo, o ajuste preciso de todas as doses exige a orientação de um profissional qualificado, considerando o histórico da área e as metas de produtividade.</p>
+          <p>📌 <strong>Combinação de Fertilizantes:</strong> Recomenda-se combinar fertilizantes mais concentrados com os de menor concentração (Ex: Sulfato de Amônio + Superfosfato Triplo ou Ureia + Superfosfato Simples).</p>
+          <p>📌 <strong>Parcelamento:</strong> Fertilizantes nitrogenados e potássicos devem ser parcelados durante o ano, conforme recomendação técnica específica da cultura.</p>
+          <p>📌 <strong>Aplicação de Fósforo:</strong> Fertilizantes fosfatados devem ser aplicados em dose única por ocasião do plantio/semeadura.</p>
+          <p>📌 <strong>Fator de Incorporação do Calcário:</strong> Para a aplicação superficial ou incorporada até 20 cm de profundidade — método observado nestes cálculos —, utiliza-se o valor 1,0. Nos casos em que a incorporação for feita de 20 a 30 cm, o valor deve ser multiplicado por 1,5.</p>
+          <p>📌 <strong>Ajuste de Reposição Mineral Contínua:</strong> Quando a análise de solo indicar uma baixa disponibilidade do elemento ou a necessidade de adubação complementar, a dose calculada para o nutriente em questão deverá ter um acréscimo destinado a suprir as perdas por fixação/precipitação do solo, lixiviação e eficiência real de absorção do sistema radicular, garantindo a efetiva reposição e manutenção da reserva mineral.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer style="position: fixed; bottom: 0; left: 0; width: 100%; text-align: center; font-size: 0.75rem; background-color: #ffffff; padding: 10px 0; z-index: 1000; box-shadow: 0 -2px 5px rgba(0,0,0,0.05);">
+      <p style="margin: 0;">&copy; Embrapa 2026.</small></p>
+    </footer>
+
+  </div>
+
+  <script>
+    const recomendacaoCulturas = {
+      "ABACAXI": { v2: 60, n: 120, p: 80, k: 320 },
+      "AÇAÍ": { v2: 60, n: 90, p: 40, k: 100 },
+      "BANANA": { v2: 60, n: 267, p: 167, k: 500 },
+      "CACAU": { v2: 60, n: 24, p: 90, k: 35 },
+      "CAFÉ CANÉFORA": { v2: 60, n: 25, p: 67, k: 50 },
+      "CITROS": { v2: 60, n: 210, p: 210, k: 105 },
+      "CUPUAÇU": { v2: 50, n: 20, p: 20, k: 32 },
+      "FEIJÃO-CAUPI": { v2: 50, n: 0, p: 80, k: 90 },
+      "MANDIOCA": { v2: 50, n: 40, p: 100, k: 120 },
+      "MARACUJÁ": { v2: 70, n: 80, p: 61, k: 72 },
+      "MILHO": { v2: 70, n: 130, p: 90, k: 70 },
+      "SOJA": { v2: 60, n: 0, p: 90, k: 70 },
+      "OUTRAS CULTURAS": { v2: 60, n: 0, p: 0, k: 0 }
+    };
+
+    function parseVal(id) {
+      const el = document.getElementById(id);
+      if (!el) return 0;
+      return parseFloat(el.value) || 0;
+    }
+
+    function formatNum(val, dec = 2) {
+      return val.toFixed(dec);
+    }
+
+    function formatMoeda(val) {
+      return val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function atualizarCultura() {
+      const sel = document.getElementById('cultura').value;
+      const rec = recomendacaoCulturas[sel];
+      if (rec) {
+        document.getElementById('v2_input').value = rec.v2 + "%";
+        document.getElementById('dose_n').value = rec.n;
+        document.getElementById('dose_p2o5').value = rec.p;
+        document.getElementById('dose_k2o').value = rec.k;
+        calcular();
+      }
+    }
+
+    window.openModule = function(tabName) {
+      const hero = document.getElementById('hero');
+      const app = document.getElementById('app');
+      if (hero) hero.style.display = 'none';
+      if (app) app.style.display = 'flex';
+      switchTab(tabName);
+      calcular();
+    };
+
+    window.showHero = function() {
+      const hero = document.getElementById('hero');
+      const app = document.getElementById('app');
+      if (app) app.style.display = 'none';
+      if (hero) hero.style.display = 'flex';
+    };
+
+    window.switchTab = function(tabName) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
+      
+      const targetTab = document.getElementById('tab-' + tabName);
+      if (targetTab) targetTab.classList.add('active');
+
+      const tabs = Array.from(document.querySelectorAll('.tab-button'));
+      const activeBtn = tabs.find(btn => btn.getAttribute('onclick').includes(tabName));
+      if (activeBtn) activeBtn.classList.add('active');
+    };
+
+    function calcular() {
+      const v2 = parseFloat(document.getElementById('v2_input').value) || 60;
+      const v1 = parseVal('v1');
+      const ctc = parseVal('ctc');
+      const prnt = parseVal('prnt') || 100;
+
+      // 1. Método Elevação da Saturação por Bases
+      let nc_sat_100_tha = (v2 - v1) * ctc / 100;
+      if (nc_sat_100_tha < 0) nc_sat_100_tha = 0;
+      
+      const nc_sat_100_kgha = nc_sat_100_tha * 1000;
+      const nc_sat_comercial_kgha = nc_sat_100_kgha * (100 / prnt);
+
+      // 2. Método Neutralização do Al e Elevação de Ca+Mg
+      const al = parseVal('solo_al');
+      const ca = parseVal('solo_ca');
+      const mg = parseVal('solo_mg');
+
+      let nc_neut_100_tha = ((2 * al) + (2 - (ca + mg)));
+      if (nc_neut_100_tha < 0) nc_neut_100_tha = 0;
+
+      const nc_neut_100_kgha = nc_neut_100_tha * 1000;
+      const nc_neut_comercial_kgha = nc_neut_100_kgha * (100 / prnt);
+
+      document.getElementById('nc_sat_bases_kgha').value = formatNum(nc_sat_comercial_kgha) + " kg/ha";
+      document.getElementById('nc_al_camg_kgha').value = formatNum(nc_neut_comercial_kgha) + " kg/ha";
+
+      const nc_final_100_kgha = Math.max(nc_sat_100_kgha, nc_neut_100_kgha);
+      const nc_final_comercial_kgha = Math.max(nc_sat_comercial_kgha, nc_neut_comercial_kgha);
+      
+      const preco_calcario = parseVal('preco_calcario');
+      const custo_calcario = (nc_final_comercial_kgha) * preco_calcario;
+
+      // Atualização da Tabela de Calagem (com formatação monetária corrigida em pt-BR)
+      document.getElementById('res-v2').innerText = v2 + "%";
+      document.getElementById('res-nc100').innerText = formatNum(nc_final_100_kgha) + " kg/ha";
+      document.getElementById('res-ncprnt').innerText = formatNum(nc_final_comercial_kgha) + " kg/ha";
+      document.getElementById('res-custo-calcario').innerText = "R$ " + formatMoeda(custo_calcario);
+
+      // Doses Recomendadas de Nutrientes para a Cultura
+      const recP2O5 = parseVal('dose_p2o5');
+      const recK2O = parseVal('dose_k2o');
+      const dose_n = parseVal('dose_n');
+
+      // Análise de Solo
+      const soloP = parseVal('soloP'); // mg/dm3
+      const soloK = parseVal('soloK'); // cmol_c/dm3
+
+      // Conversões para a camada 0-20 cm
+      const estimativaP2O5 = soloP * 4.58;
+      const estimativaK2O = soloK * 942.31;
+
+      // 1. Diagnóstico Nitrogênio (N)
+      document.getElementById('diag-status-n').innerText = "Não Analisado em Rotina";
+      document.getElementById('diag-real-n').innerText = formatNum(dose_n, 1) + " kg/ha";
+
+      // 2. Diagnóstico Fósforo (P2O5)
+      document.getElementById('diag-estimativa-p').innerText = formatNum(estimativaP2O5, 1) + " kg/ha";
+      
+      const necessidadeTotalP2O5 = (recP2O5 - estimativaP2O5) / 0.2 * 1.3;
+      const abatimentoP = necessidadeTotalP2O5;
+      const doseRealP2O5 = abatimentoP > 0 ? abatimentoP : 0;
+
+      if (recP2O5 <= 0 || (estimativaP2O5 >= recP2O5 && estimativaP2O5 >= necessidadeTotalP2O5)) {
+        document.getElementById('diag-status-p').innerText = 'Suficiente no Solo (Sem Complementação)';
+      } else if (estimativaP2O5 >= recP2O5) {
+        document.getElementById('diag-status-p').innerText = 'Suficiente no Solo (Sem Complementação)';
+      } else if (recP2O5 > estimativaP2O5) {
+        document.getElementById('diag-status-p').innerText = 'Necessita Complementação (Perdas e Reposição)';
+      } else {
+        document.getElementById('diag-status-p').innerText = 'Suficiente no Solo (Sem Complementação)';
+      }
+
+      document.getElementById('diag-real-p').innerText = formatNum(doseRealP2O5, 1) + ' kg/ha';
+
+      // 3. Diagnóstico Potássio (K2O)
+      document.getElementById('diag-estimativa-k').innerText = formatNum(estimativaK2O, 1) + " kg/ha";
+
+      const necessidadeTotalK2O = (recK2O - estimativaK2O) / 0.7 * 1.3;
+      const abatimentoK = necessidadeTotalK2O;
+      const doseRealK2O = abatimentoK > 0 ? abatimentoK : 0;
+
+      if (recK2O <= 0 || (estimativaK2O >= recK2O && estimativaK2O >= necessidadeTotalK2O)) {
+        document.getElementById('diag-status-k').innerText = 'Suficiente no Solo (Sem Complementação)';
+      } else if (estimativaK2O >= recK2O) {
+        document.getElementById('diag-status-k').innerText = 'Suficiente no Solo (Sem Complementação)';
+      } else if (recK2O > estimativaK2O) {
+        document.getElementById('diag-status-k').innerText = 'Necessita Complementação (Perdas e Reposição)';
+      } else {
+        document.getElementById('diag-status-k').innerText = 'Suficiente no Solo (Sem Complementação)';
+      }
+
+      document.getElementById('diag-real-k').innerText = formatNum(doseRealK2O, 1) + ' kg/ha';
+
+      // Cálculo dos Fertilizantes Individuais com base nas Doses Reais Ajustadas
+      const samonio_peso = dose_n / 0.21;
+      const ureia_peso = dose_n / 0.45;
+      const sfs_peso = doseRealP2O5 / 0.18;
+      const sft_peso = doseRealP2O5 / 0.43;
+      const kcl_peso = doseRealK2O / 0.60;
+
+      document.getElementById('fc-samonio-peso').innerText = formatNum(samonio_peso) + " kg/ha";
+      document.getElementById('fc-samonio-valor').innerText = "R$ " + formatMoeda(samonio_peso * parseVal('preco_samonio'));
+      document.getElementById('fc-ureia-peso').innerText = formatNum(ureia_peso) + " kg/ha";
+      document.getElementById('fc-ureia-valor').innerText = "R$ " + formatMoeda(ureia_peso * parseVal('preco_ureia'));
+      document.getElementById('fc-sfs-peso').innerText = formatNum(sfs_peso) + " kg/ha";
+      document.getElementById('fc-sfs-valor').innerText = "R$ " + formatMoeda(sfs_peso * parseVal('preco_sfs'));
+      document.getElementById('fc-sft-peso').innerText = formatNum(sft_peso) + " kg/ha";
+      document.getElementById('fc-sft-valor').innerText = "R$ " + formatMoeda(sft_peso * parseVal('preco_sft'));
+      document.getElementById('fc-kcl-peso').innerText = formatNum(kcl_peso) + " kg/ha";
+      document.getElementById('fc-kcl-valor').innerText = "R$ " + formatMoeda(kcl_peso * parseVal('preco_kcl'));
+
+      // Formulação Agrupada (com arredondamento para inteiros sem vírgulas)
+      const g1_total = samonio_peso + sft_peso + kcl_peso;
+      const g2_total = ureia_peso + sfs_peso + kcl_peso;
+
+      if (g1_total > 0) {
+        const n_perc = Math.round((dose_n / g1_total) * 100);
+        const p_perc = Math.round((doseRealP2O5 / g1_total) * 100);
+        const k_perc = Math.round((doseRealK2O / g1_total) * 100);
+        document.getElementById('g1-formula').innerText = `${n_perc} - ${p_perc} - ${k_perc}`;
+        document.getElementById('g1-qtd').innerText = formatNum(g1_total) + " kg/ha";
+        document.getElementById('g1-custo').innerText = "R$ " + formatMoeda((samonio_peso * parseVal('preco_samonio')) + (sft_peso * parseVal('preco_sft')) + (kcl_peso * parseVal('preco_kcl')));
+      } else {
+        document.getElementById('g1-formula').innerText = "0 - 0 - 0";
+        document.getElementById('g1-qtd').innerText = "0.00 kg/ha";
+        document.getElementById('g1-custo').innerText = "R$ 0,00";
+      }
+
+      if (g2_total > 0) {
+        const n_perc = Math.round((dose_n / g2_total) * 100);
+        const p_perc = Math.round((doseRealP2O5 / g2_total) * 100);
+        const k_perc = Math.round((doseRealK2O / g2_total) * 100);
+        document.getElementById('g2-formula').innerText = `${n_perc} - ${p_perc} - ${k_perc}`;
+        document.getElementById('g2-qtd').innerText = formatNum(g2_total) + " kg/ha";
+        document.getElementById('g2-custo').innerText = "R$ " + formatMoeda((ureia_peso * parseVal('preco_ureia')) + (sfs_peso * parseVal('preco_sfs')) + (kcl_peso * parseVal('preco_kcl')));
+      } else {
+        document.getElementById('g2-formula').innerText = "0 - 0 - 0";
+        document.getElementById('g2-qtd').innerText = "0.00 kg/ha";
+        document.getElementById('g2-custo').innerText = "R$ 0,00";
+      }
+    }
+
+    function compartilharRelatorio() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Relatório',
+          text: 'Confira os resultados de calagem e adubação gerados pelo FertAmapá.',
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        alert("A função de compartilhamento não é suportada neste navegador.");
+      }
+    }
+
+    window.onload = function() {
+      calcular();
+    };
+    // Lista dos IDs dos campos de preço
+const camposPreco = [
+  'preco_calcario',
+  'preco_samonio',
+  'preco_ureia',
+  'preco_sfs',
+  'preco_sft',
+  'preco_kcl'
+];
+
+// Carrega os preços gravados no dispositivo ao abrir o sistema
+function carregarPrecos() {
+  camposPreco.forEach(id => {
+    const valorSalvo = localStorage.getItem(id);
+    const campo = document.getElementById(id);
+    if (campo) {
+      // Se houver valor gravado, aplica ao input; caso contrário, deixa em branco/zerado
+      campo.value = valorSalvo !== null ? valorSalvo : '';
+    }
+  });
+}
+
+// Salva as alterações de preço no dispositivo do usuário
+function salvarPrecos() {
+  camposPreco.forEach(id => {
+    const campo = document.getElementById(id);
+    if (campo) {
+      localStorage.setItem(id, campo.value);
+    }
+  });
+}
+
+// Executa o salvamento e recalculamento ao alterar qualquer preço
+function salvarEcalcular() {
+  salvarPrecos();
+  calcular();
+}
+
+// Inicialização: carrega os preços antes de realizar o primeiro cálculo
+window.onload = function() {
+  carregarPrecos();
+  calcular();
+};
+
+  </script>
+</body>
+</html>
