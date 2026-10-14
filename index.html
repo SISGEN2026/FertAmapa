@@ -457,7 +457,7 @@
     <div class="hero-bg"></div>
     <div class="hero-content">
       <h1 class="hero-title">FertAmapá</h1>
-      <p class="hero-subtitle">Sistema de Cálculos para Calagem e Adubação Mineral de NPK</p>
+      <p class="hero-subtitle">Sistema de Cálculos para Calagem e Adubação Mineral de NPK Para Plantio/Semeio</p>
       
       <div class="hero-buttons">
         <button type="button" class="btn-square" id="btn-start-fert" onclick="openModule('FertAmapá')">
@@ -524,11 +524,15 @@
                   <option value="CACAU">CACAU</option>
                   <option value="CAFÉ CANÉFORA">CAFÉ CANÉFORA</option>
                   <option value="CITROS">CITROS</option>
-                  <option value="CUPUAÇU">DENDÊ</option>
+                  <option value="COCO">COCO</option>
+                  <option value="CUPUAÇU">CUPUAÇU</option>
                   <option value="FEIJÃO-CAUPI">FEIJÃO-CAUPI</option>
+                  <option value="FORRAGEIRA">FORRAGEIRA</option>
                   <option value="MANDIOCA">MANDIOCA</option>
                   <option value="MARACUJÁ">MARACUJÁ</option>
+                  <option value="MELANCIA">MELANCIA</option>
                   <option value="MILHO">MILHO</option>
+                  <option value="PIMENTA-DO-REINO">PIMENTA-DO-REINO</option>
                   <option value="SOJA">SOJA</option>
                   <option value="OUTRAS CULTURAS">OUTRAS CULTURAS</option>
                 </select>
@@ -781,8 +785,8 @@
       </thead>
       <tbody>
         <tr>
-          <td>Calcário Dolomítico</td>
-          <td>PRNT Corrigido</td>
+          <td>Calcário</td>
+          <td>PRNT</td>
           <td><input type="number" class="input-table-price" id="preco_calcario" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
         </tr>
         <tr>
@@ -843,11 +847,15 @@
       "CACAU": { v2: 60, n: 24, p: 90, k: 35 },
       "CAFÉ CANÉFORA": { v2: 60, n: 25, p: 67, k: 50 },
       "CITROS": { v2: 60, n: 210, p: 210, k: 105 },
+      "COCO": { v2: 60, n: 210, p: 210, k: 105 },
       "CUPUAÇU": { v2: 50, n: 20, p: 20, k: 32 },
       "FEIJÃO-CAUPI": { v2: 50, n: 0, p: 80, k: 90 },
+      "FORRAGEIRA": { v2: 50, n: 0, p: 80, k: 90 },
       "MANDIOCA": { v2: 50, n: 40, p: 100, k: 120 },
       "MARACUJÁ": { v2: 70, n: 80, p: 61, k: 72 },
+      "MELANCIA": { v2: 70, n: 80, p: 61, k: 72 },
       "MILHO": { v2: 70, n: 130, p: 90, k: 70 },
+      "PIMENTA-DO-REINO": { v2: 70, n: 130, p: 90, k: 70 },
       "SOJA": { v2: 60, n: 0, p: 90, k: 70 },
       "OUTRAS CULTURAS": { v2: 60, n: 0, p: 0, k: 0 }
     };
