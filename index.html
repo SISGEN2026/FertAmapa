@@ -13,7 +13,6 @@
       --text-color: #333;
       --border-color: #ccc;
     }
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -21,7 +20,6 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
-
     body {
       background-color: #f8f9fa;
       color: var(--text-color);
@@ -29,7 +27,6 @@
       display: flex;
       flex-direction: column;
     }
-
     /* Tela de Apresentação (Hero) */
     .hero-container {
       position: relative;
@@ -44,7 +41,6 @@
       text-align: center;
       padding: 20px 15px;
     }
-
     .hero-bg {
       position: absolute;
       top: 0;
@@ -56,7 +52,6 @@
       transform: scale(1.08);
       z-index: 1;
     }
-
     .hero-content {
       position: relative;
       z-index: 2;
@@ -72,7 +67,6 @@
       flex-direction: column;
       align-items: center;
     }
-
     .hero-title {
       font-size: 2.8rem;
       font-weight: 800;
@@ -80,7 +74,6 @@
       margin-bottom: 8px;
       text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
     }
-
     .hero-subtitle {
       font-size: 1rem;
       margin-bottom: 25px;
@@ -88,7 +81,6 @@
       opacity: 0.95;
       line-height: 1.4;
     }
-
     .hero-buttons {
       display: flex;
       flex-direction: column;
@@ -96,7 +88,6 @@
       width: 100%;
       align-items: center;
     }
-
     .btn-square {
       width: 100%;
       max-width: 280px;
@@ -116,24 +107,20 @@
       transition: all 0.2s ease;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-
     .btn-square svg {
       width: 32px;
       height: 32px;
       fill: var(--primary-color);
       transition: transform 0.2s ease;
     }
-
     .btn-square:active {
       background-color: var(--primary-color);
       color: white;
       transform: scale(0.98);
     }
-
     .btn-square:active svg {
       fill: white;
     }
-
     /* Interface Principal */
     .app-header {
       background-color: var(--primary-color);
@@ -147,20 +134,17 @@
       top: 0;
       z-index: 10;
     }
-
     .app-title {
       font-size: 1.3rem;
       font-weight: bold;
       cursor: pointer;
     }
-
     .header-actions {
       display: flex;
       align-items: center;
       gap: 6px;
       flex-wrap: wrap;
     }
-
     .btn-action {
       background-color: #ffffff;
       color: var(--primary-color);
@@ -176,17 +160,14 @@
       transition: background-color 0.2s ease;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-
     .btn-action:hover {
       background-color: #f0f0f0;
     }
-
     .btn-action svg {
       width: 16px;
       height: 16px;
       fill: var(--primary-color);
     }
-
     /* Navegação das Abas */
     .nav-tabs {
       display: flex;
@@ -197,11 +178,9 @@
       white-space: nowrap;
       -webkit-overflow-scrolling: touch;
     }
-
     .nav-tabs::-webkit-scrollbar {
       display: none;
     }
-
     .tab-button {
       padding: 12px 16px;
       border: none;
@@ -214,13 +193,11 @@
       border-bottom: 3px solid transparent;
       flex-shrink: 0;
     }
-
     .tab-button.active {
       color: var(--primary-color);
       border-bottom-color: var(--primary-color);
       background-color: white;
     }
-
     .main-content {
       padding: 15px 12px;
       width: 100%;
@@ -228,7 +205,6 @@
       margin: 0 auto;
       flex: 1;
     }
-
     .tab-content {
       display: none;
       background: white;
@@ -236,11 +212,9 @@
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
-
     .tab-content.active {
       display: block !important;
     }
-
     h2 {
       color: var(--primary-color);
       font-size: 1.25rem;
@@ -249,30 +223,25 @@
       padding-bottom: 6px;
       line-height: 1.3;
     }
-
     h3 {
       font-size: 1.05rem;
     }
-
     .form-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 14px;
       margin-bottom: 20px;
     }
-
     .form-group {
       display: flex;
       flex-direction: column;
       gap: 4px;
     }
-
     .form-group-row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: 10px;
     }
-
     .sub-group-title {
       font-size: 0.82rem;
       font-weight: 700;
@@ -283,7 +252,6 @@
       margin-top: 6px;
       border-left: 3px solid var(--primary-color);
     }
-
     .side-bar-container {
       display: flex;
       flex-direction: row;
@@ -292,7 +260,6 @@
       border: 1px solid #e0e0e0;
       background-color: #fafafa;
     }
-
     .side-bar-label {
       background-color: var(--primary-color);
       color: white;
@@ -309,7 +276,6 @@
       user-select: none;
       flex-shrink: 0;
     }
-
     .side-bar-content {
       flex: 1;
       padding: 10px;
@@ -318,7 +284,6 @@
       gap: 10px;
       background-color: #ffffff;
     }
-
     .section-title {
       font-size: 0.9rem;
       font-weight: 700;
@@ -327,13 +292,11 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-
     label {
       font-weight: 600;
       font-size: 0.8rem;
       color: #444;
     }
-
     input, select {
       padding: 7px 9px;
       border: 1px solid var(--border-color);
@@ -343,7 +306,6 @@
       width: 100%;
       background-color: #fff;
     }
-
     input[readonly] {
       background-color: #e9ecef;
       color: #495057;
@@ -351,11 +313,9 @@
       cursor: not-allowed;
       border-color: #ced4da;
     }
-
     input:focus:not([readonly]), select:focus {
       border-color: var(--primary-color);
     }
-
     .table-container {
       overflow-x: auto;
       margin-top: 12px;
@@ -363,13 +323,11 @@
       border-radius: 6px;
       border: 1px solid var(--border-color);
     }
-
     table {
       width: 100%;
       border-collapse: collapse;
       table-layout: auto;
     }
-
     th, td {
       border: 1px solid #e0e0e0;
       padding: 6px 8px;
@@ -377,28 +335,23 @@
       text-align: left;
       word-break: break-word;
     }
-
     th {
       background-color: #f1f8e9;
       color: var(--primary-color);
       font-weight: bold;
     }
-
     tr:nth-child(even) {
       background-color: #fafafa;
     }
-
     .table-compact th,
     .table-compact td {
       padding: 5px 6px;
       font-size: 0.76rem;
     }
-
     #tab-INSUMOS table th:nth-child(3),
     #tab-INSUMOS table td:nth-child(3) {
       text-align: center;
     }
-
     .input-table-price {
       padding: 5px 6px;
       font-size: 0.8rem;
@@ -410,7 +363,6 @@
       background-color: #f1f8e9;
       text-align: center;
     }
-
     .info-card {
       background-color: #e8f5e9;
       border-left: 4px solid var(--primary-color);
@@ -418,13 +370,11 @@
       margin-bottom: 15px;
       border-radius: 4px;
     }
-
     .info-card p {
       margin-bottom: 6px;
       line-height: 1.35;
       font-size: 0.82rem;
     }
-
     footer {
       text-align: center;
       padding: 12px;
@@ -433,7 +383,6 @@
       color: #666;
       margin-top: auto;
     }
-
     @media print {
       body { background-color: white !important; color: black !important; }
       .hero-container, .app-header, .nav-tabs, footer, .header-actions { display: none !important; }
@@ -446,18 +395,16 @@
       th, td { border: 1px solid #999 !important; }
       .print-only { display: block !important; }
     }
-
     .print-only { display: none; }
   </style>
 </head>
 <body>
-
   <!-- HERO -->
   <div id="hero" class="hero-container">
     <div class="hero-bg"></div>
     <div class="hero-content">
       <h1 class="hero-title">FertAmapá</h1>
-      <p class="hero-subtitle">Sistema de Cálculos para Calagem e Adubação Mineral de NPK Para Plantio/Semeio</p>
+      <p class="hero-subtitle">Sistema de Cálculos para Calagem e Adubação Mineral de NPK (Plantio ou Semeio)</p>
       
       <div class="hero-buttons">
         <button type="button" class="btn-square" id="btn-start-fert" onclick="openModule('FertAmapá')">
@@ -469,7 +416,6 @@
           <svg viewBox="0 0 24 24"><path d="M7,18C5.9,18 5,18.9 5,20C5,21.1 5.9,22 7,22C8.1,22 9,21.1 9,20C9,18.9 8.1,18 7,18M1,2V4H3L6.6,11.59L5.25,14.04C5.09,14.32 5,14.65 5,15C5,16.1 5.9,17 7,17H19V15H7.42C7.28,15 7.17,14.89 7.17,14.75L7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.59 17.3,11.97L20.88,5.5C20.96,5.34 21,5.17 21,5C21,4.45 20.55,4 20,4H5.21L4.27,2H1M17,18C15.9,18 15,18.9 15,20C15,21.1 15.9,22 17,22C18.1,22 19,21.1 19,20C19,18.9 18.1,18 17,18Z"/></svg>
           Insumos
         </button>
-
         <button type="button" class="btn-square" id="btn-start-dizeres" onclick="openModule('DIZERES')">
           <svg viewBox="0 0 24 24">
             <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M8,12V14H16V12H8M8,16V18H13V16H8Z"/>
@@ -479,7 +425,6 @@
       </div>
     </div>
   </div>
-
   <!-- APP -->
   <div id="app" style="display: none; flex-direction: column; min-height: 100vh;">
     <header class="app-header">
@@ -498,13 +443,11 @@
         </button>
       </div>
     </header>
-
     <nav class="nav-tabs">
       <button type="button" class="tab-button active" onclick="switchTab('FertAmapá')">CÁLCULOS</button>
       <button type="button" class="tab-button" onclick="switchTab('INSUMOS')">INSUMOS</button>
       <button type="button" class="tab-button" onclick="switchTab('DIZERES')">DIZERES TÉCNICOS</button>
     </nav>
-
     <main class="main-content">
       <!-- ABA FertAmapá -->
       <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Embrapa_-_Marca.png" alt="Marca Embrapa" style="width: 150px; height: auto; display: block; margin: 0 auto 20px auto;">
@@ -537,7 +480,6 @@
                   <option value="OUTRAS CULTURAS">OUTRAS CULTURAS</option>
                 </select>
               </div>
-
               <div class="sub-group-title">1. Método Elevação da Saturação por Bases</div>
               <div class="form-group-row">
                 <div class="form-group">
@@ -553,7 +495,6 @@
                   <input type="number" id="ctc" value="2.1" step="0.1" oninput="calcular()">
                 </div>
               </div>
-
               <div class="sub-group-title">2. Método Neutralização do Al e Elevação de Ca+Mg</div>
               <div class="form-group-row">
                 <div class="form-group">
@@ -569,7 +510,6 @@
                   <input type="number" id="solo_mg" value="0.6" step="0.1" oninput="calcular()">
                 </div>
               </div>
-
               <div class="sub-group-title">3. Especificação do Insumo</div>
               <div class="form-group-row">
                 <div class="form-group">
@@ -577,7 +517,6 @@
                   <input type="number" id="prnt" value="83.0" step="0.1" oninput="calcular()">
                 </div>
               </div>
-
               <div class="sub-group-title">4. Resultados da Calagem por Método Comercial (kg/ha)</div>
               <div class="form-group-row">
                 <div class="form-group">
@@ -589,14 +528,11 @@
                   <input type="text" id="nc_al_camg_kgha" value="0.00 kg/ha" readonly>
                 </div>
               </div>
-
             </div>
           </div>
-
           <div style="margin-top: 10px;">
             <div class="section-title">🌱 Análise de Solo & Adubação Sugerida</div>
           </div>
-
           <div class="side-bar-container">
             <div class="side-bar-label">FONTES MINERAIS</div>
             <div class="side-bar-content">
@@ -615,7 +551,6 @@
                   <input type="number" id="soloK" value="0.39" step="0.01" oninput="calcular()">
                 </div>
               </div>
-
               <div class="sub-group-title">2. Recomendação Teórica para a Cultura</div>
               <div class="form-group-row">
                 <div class="form-group">
@@ -634,44 +569,6 @@
             </div>
           </div>
         </div>
-
-        <h3 style="margin-top: 20px; color: var(--primary-color);">Diagnóstico e Doses Reais Ajustadas com Reposição Mineral</h3>
-        <div class="table-container">
-          <table class="table-compact">
-            <thead>
-              <tr>
-                <th style="width:15%;">Nutriente</th>
-                <th style="width:20%;">Estimativa Solo (kg/ha)</th>
-                <th style="width:40%;">Status / Interpretação</th>
-                <th style="width:25%;">Dose Real Ajustada</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>N</strong></td>
-                <td>-</td>
-                <td id="diag-status-n">Não Analisado em Rotina</td>
-                <td id="diag-real-n">0.0 kg/ha</td>
-              </tr>
-              <tr>
-                <td><strong>P₂O₅</strong></td>
-                <td id="diag-estimativa-p">0.0 kg/ha</td>
-                <td id="diag-status-p">-</td>
-                <td id="diag-real-p">0.0 kg/ha</td>
-              </tr>
-              <tr>
-                <td><strong>K₂O</strong></td>
-                <td id="diag-estimativa-k">0.0 kg/ha</td>
-                <td id="diag-status-k">-</td>
-                <td id="diag-real-k">0.0 kg/ha</td>
-              </tr>
-            </tbody>
-          </table>
-          <div style="padding: 4px;">
-            <small style="color: green;">&nbsp;Para mais informações consulte os Dizeres Técnicos.</small>
-          </div>
-        </div>
-
         <h3 style="margin-top: 20px; color: var(--primary-color);">Resultados da Calagem</h3>
         <div class="table-container">
           <table class="table-compact">
@@ -701,7 +598,6 @@
             </tbody>
           </table>
         </div>
-
         <h3 style="margin-top: 20px; color: var(--primary-color);">Resultados dos Fertilizantes Calculados Individualmente</h3>
         <div class="table-container">
           <table class="table-compact">
@@ -741,7 +637,6 @@
             </tbody>
           </table>
         </div>
-
         <h3 style="margin-top: 20px; color: var(--primary-color);">Formulação e Adubação Agrupada</h3>
         <div class="table-container">
           <table class="table-compact">
@@ -770,7 +665,6 @@
           </table>
         </div>
       </section>
-
      <!-- ABA INSUMOS -->
 <section id="tab-INSUMOS" class="tab-content">
   <h2>Preços de Mercado dos Insumos</h2>
@@ -818,7 +712,6 @@
     </table>
   </div>
 </section>
-
       <!-- ABA DIZERES -->
       <section id="tab-DIZERES" class="tab-content">
         <h2>Dizeres Técnicos e Recomendações</h2>
@@ -832,32 +725,89 @@
         </div>
       </section>
     </main>
-
     <footer style="position: fixed; bottom: 0; left: 0; width: 100%; text-align: center; font-size: 0.75rem; background-color: #ffffff; padding: 10px 0; z-index: 1000; box-shadow: 0 -2px 5px rgba(0,0,0,0.05);">
-      <p style="margin: 0;">&copy; Embrapa 2026.</small></p>
+      <p style="margin: 0;">&copy; Embrapa 2026.</p>
     </footer>
-
   </div>
-
   <script>
-    const recomendacaoCulturas = {
-      "ABACAXI": { v2: 60, n: 120, p: 80, k: 320 },
-      "AÇAÍ": { v2: 60, n: 90, p: 40, k: 100 },
-      "BANANA": { v2: 60, n: 267, p: 167, k: 500 },
-      "CACAU": { v2: 60, n: 24, p: 90, k: 35 },
-      "CAFÉ CANÉFORA": { v2: 60, n: 25, p: 67, k: 50 },
-      "CITROS": { v2: 60, n: 210, p: 210, k: 105 },
-      "COCO": { v2: 60, n: 210, p: 210, k: 105 },
-      "CUPUAÇU": { v2: 50, n: 20, p: 20, k: 32 },
-      "FEIJÃO-CAUPI": { v2: 50, n: 0, p: 80, k: 90 },
-      "FORRAGEIRA": { v2: 50, n: 0, p: 80, k: 90 },
-      "MANDIOCA": { v2: 50, n: 40, p: 100, k: 120 },
-      "MARACUJÁ": { v2: 70, n: 80, p: 61, k: 72 },
-      "MELANCIA": { v2: 70, n: 80, p: 61, k: 72 },
-      "MILHO": { v2: 70, n: 130, p: 90, k: 70 },
-      "PIMENTA-DO-REINO": { v2: 70, n: 130, p: 90, k: 70 },
-      "SOJA": { v2: 60, n: 0, p: 90, k: 70 },
-      "OUTRAS CULTURAS": { v2: 60, n: 0, p: 0, k: 0 }
+    const tabelaV2 = {
+      "ABACAXI": 60,
+      "AÇAÍ": 60,
+      "BANANA": 60,
+      "CACAU": 60,
+      "CAFÉ CANÉFORA": 60,
+      "CITROS": 60,
+      "COCO": 60,
+      "CUPUAÇU": 50,
+      "FEIJÃO-CAUPI": 50,
+      "FORRAGEIRA": 50,
+      "MANDIOCA": 50,
+      "MARACUJÁ": 70,
+      "MELANCIA": 70,
+      "MILHO": 70,
+      "PIMENTA-DO-REINO": 70,
+      "SOJA": 60,
+      "OUTRAS CULTURAS": 60
+    };
+
+    const tabelaNivelBaixo = {
+      "ABACAXI": { n: 120, p: 80, k: 320 },
+      "AÇAÍ": { n: 90, p: 40, k: 100 },
+      "BANANA": { n: 267, p: 167, k: 500 },
+      "CACAU": { n: 24, p: 90, k: 35 },
+      "CAFÉ CANÉFORA": { n: 25, p: 67, k: 50 },
+      "CITROS": { n: 210, p: 210, k: 105 },
+      "COCO": { n: 210, p: 210, k: 105 },
+      "CUPUAÇU": { n: 20, p: 20, k: 32 },
+      "FEIJÃO-CAUPI": { n: 0, p: 80, k: 90 },
+      "FORRAGEIRA": { n: 0, p: 80, k: 90 },
+      "MANDIOCA": { n: 40, p: 100, k: 120 },
+      "MARACUJÁ": { n: 80, p: 61, k: 72 },
+      "MELANCIA": { n: 80, p: 61, k: 72 },
+      "MILHO": { n: 130, p: 90, k: 70 },
+      "PIMENTA-DO-REINO": { n: 130, p: 90, k: 70 },
+      "SOJA": { n: 0, p: 90, k: 70 },
+      "OUTRAS CULTURAS": { n: 0, p: 0, k: 0 }
+    };
+
+    const tabelaNivelMedio = {
+      "ABACAXI": { n: 120, p: 80, k: 320 },
+      "AÇAÍ": { n: 90, p: 40, k: 100 },
+      "BANANA": { n: 267, p: 167, k: 500 },
+      "CACAU": { n: 24, p: 90, k: 35 },
+      "CAFÉ CANÉFORA": { n: 25, p: 67, k: 50 },
+      "CITROS": { n: 210, p: 210, k: 105 },
+      "COCO": { n: 210, p: 210, k: 105 },
+      "CUPUAÇU": { n: 20, p: 20, k: 32 },
+      "FEIJÃO-CAUPI": { n: 0, p: 80, k: 90 },
+      "FORRAGEIRA": { n: 0, p: 80, k: 90 },
+      "MANDIOCA": { n: 40, p: 100, k: 120 },
+      "MARACUJÁ": { n: 80, p: 61, k: 72 },
+      "MELANCIA": { n: 80, p: 61, k: 72 },
+      "MILHO": { n: 130, p: 90, k: 70 },
+      "PIMENTA-DO-REINO": { n: 130, p: 90, k: 70 },
+      "SOJA": { n: 0, p: 90, k: 70 },
+      "OUTRAS CULTURAS": { n: 0, p: 0, k: 0 }
+    };
+
+    const tabelaNivelAlto = {
+      "ABACAXI": { n: 120, p: 80, k: 320 },
+      "AÇAÍ": { n: 90, p: 40, k: 100 },
+      "BANANA": { n: 267, p: 167, k: 500 },
+      "CACAU": { n: 24, p: 90, k: 35 },
+      "CAFÉ CANÉFORA": { n: 25, p: 67, k: 50 },
+      "CITROS": { n: 210, p: 210, k: 105 },
+      "COCO": { n: 210, p: 210, k: 105 },
+      "CUPUAÇU": { n: 20, p: 20, k: 32 },
+      "FEIJÃO-CAUPI": { n: 0, p: 80, k: 90 },
+      "FORRAGEIRA": { n: 0, p: 80, k: 90 },
+      "MANDIOCA": { n: 40, p: 100, k: 120 },
+      "MARACUJÁ": { n: 80, p: 61, k: 72 },
+      "MELANCIA": { n: 80, p: 61, k: 72 },
+      "MILHO": { n: 130, p: 90, k: 70 },
+      "PIMENTA-DO-REINO": { n: 130, p: 90, k: 70 },
+      "SOJA": { n: 0, p: 90, k: 70 },
+      "OUTRAS CULTURAS": { n: 0, p: 0, k: 0 }
     };
 
     function parseVal(id) {
@@ -865,27 +815,20 @@
       if (!el) return 0;
       return parseFloat(el.value) || 0;
     }
-
     function formatNum(val, dec = 2) {
       return val.toFixed(dec);
     }
-
     function formatMoeda(val) {
       return val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
-
     function atualizarCultura() {
       const sel = document.getElementById('cultura').value;
-      const rec = recomendacaoCulturas[sel];
-      if (rec) {
-        document.getElementById('v2_input').value = rec.v2 + "%";
-        document.getElementById('dose_n').value = rec.n;
-        document.getElementById('dose_p2o5').value = rec.p;
-        document.getElementById('dose_k2o').value = rec.k;
-        calcular();
+      const v2 = tabelaV2[sel];
+      if (v2 !== undefined) {
+        document.getElementById('v2_input').value = v2 + "%";
       }
+      calcular();
     }
-
     window.openModule = function(tabName) {
       const hero = document.getElementById('hero');
       const app = document.getElementById('app');
@@ -894,126 +837,93 @@
       switchTab(tabName);
       calcular();
     };
-
     window.showHero = function() {
       const hero = document.getElementById('hero');
       const app = document.getElementById('app');
       if (app) app.style.display = 'none';
       if (hero) hero.style.display = 'flex';
     };
-
     window.switchTab = function(tabName) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('active'));
       
       const targetTab = document.getElementById('tab-' + tabName);
       if (targetTab) targetTab.classList.add('active');
-
       const tabs = Array.from(document.querySelectorAll('.tab-button'));
       const activeBtn = tabs.find(btn => btn.getAttribute('onclick').includes(tabName));
       if (activeBtn) activeBtn.classList.add('active');
     };
-
     function calcular() {
       const v2 = parseFloat(document.getElementById('v2_input').value) || 60;
       const v1 = parseVal('v1');
       const ctc = parseVal('ctc');
       const prnt = parseVal('prnt') || 100;
-
       // 1. Método Elevação da Saturação por Bases
       let nc_sat_100_tha = (v2 - v1) * ctc / 100;
       if (nc_sat_100_tha < 0) nc_sat_100_tha = 0;
       
       const nc_sat_100_kgha = nc_sat_100_tha * 1000;
       const nc_sat_comercial_kgha = nc_sat_100_kgha * (100 / prnt);
-
       // 2. Método Neutralização do Al e Elevação de Ca+Mg
       const al = parseVal('solo_al');
       const ca = parseVal('solo_ca');
       const mg = parseVal('solo_mg');
-
       let nc_neut_100_tha = ((2 * al) + (2 - (ca + mg)));
       if (nc_neut_100_tha < 0) nc_neut_100_tha = 0;
-
       const nc_neut_100_kgha = nc_neut_100_tha * 1000;
       const nc_neut_comercial_kgha = nc_neut_100_kgha * (100 / prnt);
-
       document.getElementById('nc_sat_bases_kgha').value = formatNum(nc_sat_comercial_kgha) + " kg/ha";
       document.getElementById('nc_al_camg_kgha').value = formatNum(nc_neut_comercial_kgha) + " kg/ha";
-
       const nc_final_100_kgha = Math.max(nc_sat_100_kgha, nc_neut_100_kgha);
       const nc_final_comercial_kgha = Math.max(nc_sat_comercial_kgha, nc_neut_comercial_kgha);
       
       const preco_calcario = parseVal('preco_calcario');
       const custo_calcario = (nc_final_comercial_kgha) * preco_calcario;
-
-      // Atualização da Tabela de Calagem (com formatação monetária corrigida em pt-BR)
+      // Atualização da Tabela de Calagem
       document.getElementById('res-v2').innerText = v2 + "%";
       document.getElementById('res-nc100').innerText = formatNum(nc_final_100_kgha) + " kg/ha";
       document.getElementById('res-ncprnt').innerText = formatNum(nc_final_comercial_kgha) + " kg/ha";
       document.getElementById('res-custo-calcario').innerText = "R$ " + formatMoeda(custo_calcario);
 
-      // Doses Recomendadas de Nutrientes para a Cultura
-      const recP2O5 = parseVal('dose_p2o5');
-      const recK2O = parseVal('dose_k2o');
-      const dose_n = parseVal('dose_n');
-
-      // Análise de Solo
+      // Análise de Solo e Recomendação Teórica
+      const selCultura = document.getElementById('cultura').value;
       const soloP = parseVal('soloP'); // mg/dm3
       const soloK = parseVal('soloK'); // cmol_c/dm3
 
-      // Conversões para a camada 0-20 cm
-      const estimativaP2O5 = soloP * 4.58;
-      const estimativaK2O = soloK * 942.31;
+      // Busca do valor de N exclusivamente na TABELA NÍVEL BAIXO
+      const dadosNivelBaixo = tabelaNivelBaixo[selCultura] || { n: 0, p: 0, k: 0 };
+      const dose_n = dadosNivelBaixo.n;
 
-      // 1. Diagnóstico Nitrogênio (N)
-      document.getElementById('diag-status-n').innerText = "Não Analisado em Rotina";
-      document.getElementById('diag-real-n').innerText = formatNum(dose_n, 1) + " kg/ha";
-
-      // 2. Diagnóstico Fósforo (P2O5)
-      document.getElementById('diag-estimativa-p').innerText = formatNum(estimativaP2O5, 1) + " kg/ha";
-      
-      const necessidadeTotalP2O5 = (recP2O5 - estimativaP2O5) / 0.2 * 1.3;
-      const abatimentoP = necessidadeTotalP2O5;
-      const doseRealP2O5 = abatimentoP > 0 ? abatimentoP : 0;
-
-      if (recP2O5 <= 0 || (estimativaP2O5 >= recP2O5 && estimativaP2O5 >= necessidadeTotalP2O5)) {
-        document.getElementById('diag-status-p').innerText = 'Suficiente no Solo (Sem Complementação)';
-      } else if (estimativaP2O5 >= recP2O5) {
-        document.getElementById('diag-status-p').innerText = 'Suficiente no Solo (Sem Complementação)';
-      } else if (recP2O5 > estimativaP2O5) {
-        document.getElementById('diag-status-p').innerText = 'Necessita Complementação (Perdas e Reposição)';
-      } else {
-        document.getElementById('diag-status-p').innerText = 'Suficiente no Solo (Sem Complementação)';
+      // Busca das tabelas de nível para P e K (Baixo, Médio ou Alto)
+      let tabP = tabelaNivelBaixo;
+      if (soloP > 10 && soloP <= 20) {
+        tabP = tabelaNivelMedio;
+      } else if (soloP > 20) {
+        tabP = tabelaNivelAlto;
       }
 
-      document.getElementById('diag-real-p').innerText = formatNum(doseRealP2O5, 1) + ' kg/ha';
-
-      // 3. Diagnóstico Potássio (K2O)
-      document.getElementById('diag-estimativa-k').innerText = formatNum(estimativaK2O, 1) + " kg/ha";
-
-      const necessidadeTotalK2O = (recK2O - estimativaK2O) / 0.7 * 1.3;
-      const abatimentoK = necessidadeTotalK2O;
-      const doseRealK2O = abatimentoK > 0 ? abatimentoK : 0;
-
-      if (recK2O <= 0 || (estimativaK2O >= recK2O && estimativaK2O >= necessidadeTotalK2O)) {
-        document.getElementById('diag-status-k').innerText = 'Suficiente no Solo (Sem Complementação)';
-      } else if (estimativaK2O >= recK2O) {
-        document.getElementById('diag-status-k').innerText = 'Suficiente no Solo (Sem Complementação)';
-      } else if (recK2O > estimativaK2O) {
-        document.getElementById('diag-status-k').innerText = 'Necessita Complementação (Perdas e Reposição)';
-      } else {
-        document.getElementById('diag-status-k').innerText = 'Suficiente no Solo (Sem Complementação)';
+      let tabK = tabelaNivelBaixo;
+      if (soloK > 0.15 && soloK <= 0.30) {
+        tabK = tabelaNivelMedio;
+      } else if (soloK > 0.30) {
+        tabK = tabelaNivelAlto;
       }
 
-      document.getElementById('diag-real-k').innerText = formatNum(doseRealK2O, 1) + ' kg/ha';
+      // Cálculo das doses teóricas para a Cultura: P2O5 = soloP * 4.58 e K2O = soloK * 942.31
+      const dose_p2o5 = soloP * 4.58;
+      const dose_k2o = soloK * 942.31;
 
-      // Cálculo dos Fertilizantes Individuais com base nas Doses Reais Ajustadas
+      // Atualização dos campos da '2. Recomendação Teórica para a Cultura'
+      document.getElementById('dose_n').value = dose_n;
+      document.getElementById('dose_p2o5').value = formatNum(dose_p2o5, 1);
+      document.getElementById('dose_k2o').value = formatNum(dose_k2o, 1);
+
+      // Cálculo dos Fertilizantes Individuais
       const samonio_peso = dose_n / 0.21;
       const ureia_peso = dose_n / 0.45;
-      const sfs_peso = doseRealP2O5 / 0.18;
-      const sft_peso = doseRealP2O5 / 0.43;
-      const kcl_peso = doseRealK2O / 0.60;
+      const sfs_peso = dose_p2o5 / 0.18;
+      const sft_peso = dose_p2o5 / 0.43;
+      const kcl_peso = dose_k2o / 0.60;
 
       document.getElementById('fc-samonio-peso').innerText = formatNum(samonio_peso) + " kg/ha";
       document.getElementById('fc-samonio-valor').innerText = "R$ " + formatMoeda(samonio_peso * parseVal('preco_samonio'));
@@ -1026,14 +936,13 @@
       document.getElementById('fc-kcl-peso').innerText = formatNum(kcl_peso) + " kg/ha";
       document.getElementById('fc-kcl-valor').innerText = "R$ " + formatMoeda(kcl_peso * parseVal('preco_kcl'));
 
-      // Formulação Agrupada (com arredondamento para inteiros sem vírgulas)
+      // Formulação Agrupada
       const g1_total = samonio_peso + sft_peso + kcl_peso;
       const g2_total = ureia_peso + sfs_peso + kcl_peso;
-
       if (g1_total > 0) {
         const n_perc = Math.round((dose_n / g1_total) * 100);
-        const p_perc = Math.round((doseRealP2O5 / g1_total) * 100);
-        const k_perc = Math.round((doseRealK2O / g1_total) * 100);
+        const p_perc = Math.round((dose_p2o5 / g1_total) * 100);
+        const k_perc = Math.round((dose_k2o / g1_total) * 100);
         document.getElementById('g1-formula').innerText = `${n_perc} - ${p_perc} - ${k_perc}`;
         document.getElementById('g1-qtd').innerText = formatNum(g1_total) + " kg/ha";
         document.getElementById('g1-custo').innerText = "R$ " + formatMoeda((samonio_peso * parseVal('preco_samonio')) + (sft_peso * parseVal('preco_sft')) + (kcl_peso * parseVal('preco_kcl')));
@@ -1042,11 +951,10 @@
         document.getElementById('g1-qtd').innerText = "0.00 kg/ha";
         document.getElementById('g1-custo').innerText = "R$ 0,00";
       }
-
       if (g2_total > 0) {
         const n_perc = Math.round((dose_n / g2_total) * 100);
-        const p_perc = Math.round((doseRealP2O5 / g2_total) * 100);
-        const k_perc = Math.round((doseRealK2O / g2_total) * 100);
+        const p_perc = Math.round((dose_p2o5 / g2_total) * 100);
+        const k_perc = Math.round((dose_k2o / g2_total) * 100);
         document.getElementById('g2-formula').innerText = `${n_perc} - ${p_perc} - ${k_perc}`;
         document.getElementById('g2-qtd').innerText = formatNum(g2_total) + " kg/ha";
         document.getElementById('g2-custo').innerText = "R$ " + formatMoeda((ureia_peso * parseVal('preco_ureia')) + (sfs_peso * parseVal('preco_sfs')) + (kcl_peso * parseVal('preco_kcl')));
@@ -1056,7 +964,6 @@
         document.getElementById('g2-custo').innerText = "R$ 0,00";
       }
     }
-
     function compartilharRelatorio() {
       if (navigator.share) {
         navigator.share({
@@ -1069,53 +976,43 @@
       }
     }
 
-    window.onload = function() {
+    const camposPreco = [
+      'preco_calcario',
+      'preco_samonio',
+      'preco_ureia',
+      'preco_sfs',
+      'preco_sft',
+      'preco_kcl'
+    ];
+
+    function carregarPrecos() {
+      camposPreco.forEach(id => {
+        const valorSalvo = localStorage.getItem(id);
+        const campo = document.getElementById(id);
+        if (campo) {
+          campo.value = valorSalvo !== null ? valorSalvo : '';
+        }
+      });
+    }
+
+    function salvarPrecos() {
+      camposPreco.forEach(id => {
+        const campo = document.getElementById(id);
+        if (campo) {
+          localStorage.setItem(id, campo.value);
+        }
+      });
+    }
+
+    function salvarEcalcular() {
+      salvarPrecos();
       calcular();
+    }
+
+    window.onload = function() {
+      carregarPrecos();
+      atualizarCultura();
     };
-    // Lista dos IDs dos campos de preço
-const camposPreco = [
-  'preco_calcario',
-  'preco_samonio',
-  'preco_ureia',
-  'preco_sfs',
-  'preco_sft',
-  'preco_kcl'
-];
-
-// Carrega os preços gravados no dispositivo ao abrir o sistema
-function carregarPrecos() {
-  camposPreco.forEach(id => {
-    const valorSalvo = localStorage.getItem(id);
-    const campo = document.getElementById(id);
-    if (campo) {
-      // Se houver valor gravado, aplica ao input; caso contrário, deixa em branco/zerado
-      campo.value = valorSalvo !== null ? valorSalvo : '';
-    }
-  });
-}
-
-// Salva as alterações de preço no dispositivo do usuário
-function salvarPrecos() {
-  camposPreco.forEach(id => {
-    const campo = document.getElementById(id);
-    if (campo) {
-      localStorage.setItem(id, campo.value);
-    }
-  });
-}
-
-// Executa o salvamento e recalculamento ao alterar qualquer preço
-function salvarEcalcular() {
-  salvarPrecos();
-  calcular();
-}
-
-// Inicialização: carrega os preços antes de realizar o primeiro cálculo
-window.onload = function() {
-  carregarPrecos();
-  calcular();
-};
-
   </script>
 </body>
 </html>
