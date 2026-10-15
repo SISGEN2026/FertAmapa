@@ -683,7 +683,7 @@
         </tr>
         <tr>
           <td>Sulfato de Amônio</td>
-          <td>21% N, 24% S</td>
+          <td>20% N, 22% S</td>
           <td><input type="number" class="input-table-price" id="preco_samonio" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
         </tr>
         <tr>
@@ -698,12 +698,12 @@
         </tr>
         <tr>
           <td>Superfosfato Triplo</td>
-          <td>43% P₂O₅, 10% Ca</td>
+          <td>41% P₂O₅, 10% Ca</td>
           <td><input type="number" class="input-table-price" id="preco_sft" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
         </tr>
         <tr>
           <td>Cloreto de Potássio</td>
-          <td>60% K₂O</td>
+          <td>50% K₂O</td>
           <td><input type="number" class="input-table-price" id="preco_kcl" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
         </tr>
       </tbody>
@@ -913,11 +913,11 @@
       document.getElementById('dose_k2o').value = dose_k2o;
 
       // Cálculo dos Fertilizantes Individuais
-      const samonio_peso = dose_n / 0.21;
+      const samonio_peso = dose_n / 0.20;
       const ureia_peso = dose_n / 0.45;
       const sfs_peso = dose_p2o5 / 0.18;
-      const sft_peso = dose_p2o5 / 0.43;
-      const kcl_peso = dose_k2o / 0.60;
+      const sft_peso = dose_p2o5 / 0.41;
+      const kcl_peso = dose_k2o / 0.50;
 
       document.getElementById('fc-samonio-peso').innerText = formatNum(samonio_peso) + " kg/ha";
       document.getElementById('fc-samonio-valor').innerText = "R$ " + formatMoeda(samonio_peso * parseVal('preco_samonio'));
