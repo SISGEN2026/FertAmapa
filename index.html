@@ -476,8 +476,7 @@
                   <option value="MILHO">MILHO</option>
                   <option value="PIMENTA-DO-REINO">PIMENTA-DO-REINO</option>
                   <option value="SOJA">SOJA</option>
-                  <option value="OUTRAS CULTURAS">OUTRAS CULTURAS</option>
-                </select>
+              </select>
               </div>
               <div class="sub-group-title">1. Método Elevação da Saturação por Bases</div>
               <div class="form-group-row">
@@ -743,8 +742,7 @@
       "MELANCIA": 70,
       "MILHO": 70,
       "PIMENTA-DO-REINO": 70,
-      "SOJA": 60,
-      "OUTRAS CULTURAS": 60
+      "SOJA": 60
     };
 
     // Tabelas de Nível com especificação da escala de solo para P (mg/dm³) e K (cmol_c/dm³)
@@ -764,8 +762,7 @@
       "MELANCIA": { pEscala: "0 – 10", kEscala: "<=0.15", pMin: 0, pMax: 10, kMin: 0, kMax: 0.15, n: 80, p: 61, k: 72 },
       "MILHO": { pEscala: "0 – 10", kEscala: "<=0.15", pMin: 0, pMax: 10, kMin: 0, kMax: 0.15, n: 130, p: 90, k: 70 },
       "PIMENTA-DO-REINO": { pEscala: "0 – 10", kEscala: "<=0.15", pMin: 0, pMax: 10, kMin: 0, kMax: 0.15, n: 130, p: 90, k: 70 },
-      "SOJA": { pEscala: "0 – 10", kEscala: "<=0.15", pMin: 0, pMax: 10, kMin: 0, kMax: 0.15, n: 0, p: 90, k: 70 },
-      "OUTRAS CULTURAS": { pEscala: "0 – 10", kEscala: "<=0.15", pMin: 0, pMax: 10, kMin: 0, kMax: 0.15, n: 0, p: 0, k: 0 }
+      "SOJA": { pEscala: "0 – 10", kEscala: "<=0.15", pMin: 0, pMax: 10, kMin: 0, kMax: 0.15, n: 0, p: 90, k: 70 }
     };
 
     const tabelaNivelMedio = {
@@ -784,8 +781,7 @@
       "MELANCIA": { pEscala: "10.1 – 20", kEscala: "0.16 – 0.30", pMin: 10.01, pMax: 20, kMin: 0.151, kMax: 0.30, n: 80, p: 40, k: 50 },
       "MILHO": { pEscala: "10.1 – 20", kEscala: "0.16 – 0.30", pMin: 10.01, pMax: 20, kMin: 0.151, kMax: 0.30, n: 130, p: 60, k: 50 },
       "PIMENTA-DO-REINO": { pEscala: "10.1 – 20", kEscala: "0.16 – 0.30", pMin: 10.01, pMax: 20, kMin: 0.151, kMax: 0.30, n: 130, p: 60, k: 50 },
-      "SOJA": { pEscala: "10.1 – 20", kEscala: "0.16 – 0.30", pMin: 10.01, pMax: 20, kMin: 0.151, kMax: 0.30, n: 0, p: 60, k: 50 },
-      "OUTRAS CULTURAS": { pEscala: "10.1 – 20", kEscala: "0.16 – 0.30", pMin: 10.01, pMax: 20, kMin: 0.151, kMax: 0.30, n: 0, p: 0, k: 0 }
+      "SOJA": { pEscala: "10.1 – 20", kEscala: "0.16 – 0.30", pMin: 10.01, pMax: 20, kMin: 0.151, kMax: 0.30, n: 0, p: 60, k: 50 }
     };
 
     const tabelaNivelAlto = {
@@ -804,8 +800,7 @@
       "MELANCIA": { pEscala: ">20", kEscala: ">0.30", pMin: 20.01, pMax: Infinity, kMin: 0.301, kMax: Infinity, n: 80, p: 20, k: 30 },
       "MILHO": { pEscala: ">20", kEscala: ">0.30", pMin: 20.01, pMax: Infinity, kMin: 0.301, kMax: Infinity, n: 130, p: 30, k: 30 },
       "PIMENTA-DO-REINO": { pEscala: ">20", kEscala: ">0.30", pMin: 20.01, pMax: Infinity, kMin: 0.301, kMax: Infinity, n: 130, p: 30, k: 30 },
-      "SOJA": { pEscala: ">20", kEscala: ">0.30", pMin: 20.01, pMax: Infinity, kMin: 0.301, kMax: Infinity, n: 0, p: 30, k: 30 },
-      "OUTRAS CULTURAS": { pEscala: ">20", kEscala: ">0.30", pMin: 20.01, pMax: Infinity, kMin: 0.301, kMax: Infinity, n: 0, p: 0, k: 0 }
+      "SOJA": { pEscala: ">20", kEscala: ">0.30", pMin: 20.01, pMax: Infinity, kMin: 0.301, kMax: Infinity, n: 0, p: 30, k: 30 }
     };
 
     function parseVal(id) {
