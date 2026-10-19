@@ -390,11 +390,20 @@
       margin-top: auto;
     }
     
-    /* Configuração de Impressão / PDF - Oculta Metadados e Ajusta a Folha Única */
+    /* Configuração de Impressão / PDF - Suprime a URL e Mantém Apenas a Numeração da Página no Rodapé */
     @media print {
       @page {
         size: portrait;
         margin: 12mm 15mm;
+        @bottom-left {
+          content: "" !important;
+        }
+        @bottom-center {
+          content: "" !important;
+        }
+        @bottom-right {
+          content: counter(page) !important;
+        }
       }
       html, body { 
         height: auto !important;
@@ -404,7 +413,7 @@
         margin: 0 !important;
         padding: 0 !important;
       }
-      .hero-container, .app-header, .nav-tabs, .header-actions { 
+      .hero-container, .app-header, .nav-tabs, footer, .header-actions { 
         display: none !important; 
       }
       #app { 
@@ -431,20 +440,6 @@
       .table-container { border: none !important; }
       th, td { border: 1px solid #999 !important; }
       .print-only { display: block !important; }
-
-      /* Exibição limpa do Rodapé no PDF/Impressão */
-      footer {
-        display: block !important;
-        position: static !important;
-        margin-top: 20px !important;
-        padding-top: 8px !important;
-        border-top: 1px solid #ccc !important;
-        background: transparent !important;
-        box-shadow: none !important;
-        text-align: center !important;
-        font-size: 0.75rem !important;
-        page-break-inside: avoid !important;
-      }
     }
     .print-only { display: none; }
   </style>
@@ -781,7 +776,7 @@
           <p>📌 <strong>Necessidades nutricionais (N, P₂O₅ e K₂O):</strong> As dosagens teóricas sugeridas aplicam-se exclusivamente às etapas de plantio ou semeio, a depender da cultura, visando o seu desenvolvimento inicial e/ou estabelecimento, com base em tabelas oficiais e na literatura científica. As demais e subsequentes adubações ficam condicionadas ao acompanhamento contínuo do estado nutricional das plantas e do solo ao longo do ciclo. Contudo, o ajuste preciso de todas as doses exige a orientação de um profissional qualificado, considerando o histórico da área e as metas de produtividade.</p>
           <p>📌 <strong>Combinação de Fertilizantes:</strong> Recomenda-se combinar fertilizantes mais concentrados com os de menor concentração (Ex: Sulfato de Amônio + Superfosfato Triplo ou Ureia + Superfosfato Simples).</p>
           <p>📌 <strong>Parcelamento:</strong> Fertilizantes nitrogenados e potássicos devem ser parcelados durante o ano, conforme recomendação técnica específica da cultura.</p>
-          <p>📌 <strong>Aplicação de Fósforo:</strong> Fertilizantes fosfatados devem ser applied em dose única por ocasião do plantio/semeadura.</p>
+          <p>📌 <strong>Aplicação de Fósforo:</strong> Fertilizantes fosfatados devem ser aplicados em dose única por ocasião do plantio/semeadura.</p>
           <p>📌 <strong>Fator de Incorporação do Calcário:</strong> Para a aplicação superficial ou incorporada até 20 cm de profundidade — método observado nestes cálculos —, utiliza-se o valor 1,0. Nos casos em que a incorporação for feita de 20 a 30 cm, o valor deve ser multiplicado por 1,5.</p>
         </div>
       </section>
