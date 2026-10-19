@@ -127,7 +127,6 @@
     .btn-square:active svg {
       fill: white;
     }
-
     /* Faixa Fixa Superior (Header) - Verde Mantido */
     .app-header {
       background-color: var(--green-header);
@@ -175,7 +174,6 @@
       height: 16px;
       fill: var(--green-header);
     }
-
     /* Navegação das Abas - Azul Embrapa */
     .nav-tabs {
       display: flex;
@@ -392,25 +390,61 @@
       margin-top: auto;
     }
     
-    /* Configuração de Impressão / PDF - Oculta URL e Metadados do Navegador */
+    /* Configuração de Impressão / PDF - Oculta Metadados e Ajusta a Folha Única */
     @media print {
       @page {
-        margin: 0;
+        size: portrait;
+        margin: 12mm 15mm;
       }
-      body { 
+      html, body { 
+        height: auto !important;
+        min-height: 0 !important;
         background-color: white !important; 
         color: black !important; 
-        margin: 1.5cm !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
-      .hero-container, .app-header, .nav-tabs, footer, .header-actions { display: none !important; }
-      #app { display: flex !important; }
-      .main-content { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
-      .tab-content { box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; }
-      input, select { border: none !important; background: transparent !important; padding: 0 !important; }
+      .hero-container, .app-header, .nav-tabs, .header-actions { 
+        display: none !important; 
+      }
+      #app { 
+        display: block !important; 
+        min-height: 0 !important;
+        height: auto !important;
+      }
+      .main-content { 
+        max-width: 100% !important; 
+        padding: 0 !important; 
+        margin: 0 !important; 
+      }
+      .tab-content { 
+        box-shadow: none !important; 
+        padding: 0 !important; 
+        border-radius: 0 !important; 
+      }
+      input, select { 
+        border: none !important; 
+        background: transparent !important; 
+        padding: 0 !important; 
+      }
       .side-bar-container { border: 1px solid #ccc !important; }
       .table-container { border: none !important; }
       th, td { border: 1px solid #999 !important; }
       .print-only { display: block !important; }
+
+      /* Exibição limpa do Rodapé no PDF/Impressão */
+      footer {
+        display: block !important;
+        position: static !important;
+        margin-top: 20px !important;
+        padding-top: 8px !important;
+        border-top: 1px solid #ccc !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        text-align: center !important;
+        font-size: 0.75rem !important;
+        page-break-inside: avoid !important;
+      }
     }
     .print-only { display: none; }
   </style>
@@ -747,13 +781,13 @@
           <p>📌 <strong>Necessidades nutricionais (N, P₂O₅ e K₂O):</strong> As dosagens teóricas sugeridas aplicam-se exclusivamente às etapas de plantio ou semeio, a depender da cultura, visando o seu desenvolvimento inicial e/ou estabelecimento, com base em tabelas oficiais e na literatura científica. As demais e subsequentes adubações ficam condicionadas ao acompanhamento contínuo do estado nutricional das plantas e do solo ao longo do ciclo. Contudo, o ajuste preciso de todas as doses exige a orientação de um profissional qualificado, considerando o histórico da área e as metas de produtividade.</p>
           <p>📌 <strong>Combinação de Fertilizantes:</strong> Recomenda-se combinar fertilizantes mais concentrados com os de menor concentração (Ex: Sulfato de Amônio + Superfosfato Triplo ou Ureia + Superfosfato Simples).</p>
           <p>📌 <strong>Parcelamento:</strong> Fertilizantes nitrogenados e potássicos devem ser parcelados durante o ano, conforme recomendação técnica específica da cultura.</p>
-          <p>📌 <strong>Aplicação de Fósforo:</strong> Fertilizantes fosfatados devem ser aplicados em dose única por ocasião do plantio/semeadura.</p>
+          <p>📌 <strong>Aplicação de Fósforo:</strong> Fertilizantes fosfatados devem ser applied em dose única por ocasião do plantio/semeadura.</p>
           <p>📌 <strong>Fator de Incorporação do Calcário:</strong> Para a aplicação superficial ou incorporada até 20 cm de profundidade — método observado nestes cálculos —, utiliza-se o valor 1,0. Nos casos em que a incorporação for feita de 20 a 30 cm, o valor deve ser multiplicado por 1,5.</p>
         </div>
       </section>
     </main>
     <footer style="position: fixed; bottom: 0; left: 0; width: 100%; text-align: center; font-size: 0.75rem; background-color: #ffffff; padding: 5px 0; z-index: 1000; box-shadow: 0 -2px 5px rgba(0,0,0,0.05);">
-      <p style="margin: 0;">&copy; Embrapa 2026.</p>
+      <p style="margin: 0;">&copy; Embrapa - <span id="data-footer"></span>.</p>
     </footer>
   </div>
   <script>
