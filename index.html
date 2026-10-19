@@ -6,10 +6,16 @@
   <title>FertAmapá - Cálculos de Calagem e Adubação Mineral de NPK</title>
   <style>
     :root {
-      --primary-color: #2e7d32;
-      --primary-hover: #1b5e20;
+      /* Verde mantido para Tela de Início e Faixa Superior */
+      --green-header: #2e7d32;
+      --green-header-hover: #1b5e20;
+      
+      /* Azul Embrapa para o Corpo das Abas */
+      --primary-color: #003b70;
+      --primary-hover: #00284d;
       --secondary-color: #f5f5f5;
-      --accent-color: #81c784;
+      --accent-color: #64b5f6;
+      --light-blue-bg: #e3f2fd;
       --text-color: #333;
       --border-color: #ccc;
     }
@@ -27,7 +33,7 @@
       display: flex;
       flex-direction: column;
     }
-    /* Tela de Apresentação (Hero) */
+    /* Tela de Apresentação (Hero) - Verde Mantido */
     .hero-container {
       position: relative;
       width: 100%;
@@ -47,7 +53,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: #2e7d32;
+      background: var(--green-header);
       filter: blur(6px);
       transform: scale(1.08);
       z-index: 1;
@@ -93,8 +99,8 @@
       max-width: 280px;
       height: 70px;
       background-color: rgba(255, 255, 255, 0.95);
-      color: var(--primary-color);
-      border: 2px solid var(--primary-color);
+      color: var(--green-header);
+      border: 2px solid var(--green-header);
       border-radius: 14px;
       font-size: 1rem;
       font-weight: bold;
@@ -110,20 +116,21 @@
     .btn-square svg {
       width: 32px;
       height: 32px;
-      fill: var(--primary-color);
+      fill: var(--green-header);
       transition: transform 0.2s ease;
     }
     .btn-square:active {
-      background-color: var(--primary-color);
+      background-color: var(--green-header);
       color: white;
       transform: scale(0.98);
     }
     .btn-square:active svg {
       fill: white;
     }
-    /* Interface Principal */
+
+    /* Faixa Fixa Superior (Header) - Verde Mantido */
     .app-header {
-      background-color: var(--primary-color);
+      background-color: var(--green-header);
       color: white;
       padding: 12px 16px;
       display: flex;
@@ -147,7 +154,7 @@
     }
     .btn-action {
       background-color: #ffffff;
-      color: var(--primary-color);
+      color: var(--green-header);
       border: none;
       padding: 6px 10px;
       border-radius: 6px;
@@ -166,9 +173,10 @@
     .btn-action svg {
       width: 16px;
       height: 16px;
-      fill: var(--primary-color);
+      fill: var(--green-header);
     }
-    /* Navegação das Abas */
+
+    /* Navegação das Abas - Azul Embrapa */
     .nav-tabs {
       display: flex;
       background-color: #e0e0e0;
@@ -246,7 +254,7 @@
       font-size: 0.82rem;
       font-weight: 700;
       color: var(--primary-color);
-      background-color: #f1f8e9;
+      background-color: var(--light-blue-bg);
       padding: 5px 8px;
       border-radius: 4px;
       margin-top: 6px;
@@ -336,7 +344,7 @@
       word-break: break-word;
     }
     th {
-      background-color: #f1f8e9;
+      background-color: var(--light-blue-bg);
       color: var(--primary-color);
       font-weight: bold;
     }
@@ -359,12 +367,12 @@
       border-radius: 4px;
       width: 80px;
       font-weight: bold;
-      color: #1b5e20;
-      background-color: #f1f8e9;
+      color: var(--primary-hover);
+      background-color: var(--light-blue-bg);
       text-align: center;
     }
     .info-card {
-      background-color: #e8f5e9;
+      background-color: var(--light-blue-bg);
       border-left: 4px solid var(--primary-color);
       padding: 10px;
       margin-bottom: 15px;
@@ -383,8 +391,17 @@
       color: #666;
       margin-top: auto;
     }
+    
+    /* Configuração de Impressão / PDF - Oculta URL e Metadados do Navegador */
     @media print {
-      body { background-color: white !important; color: black !important; }
+      @page {
+        margin: 0;
+      }
+      body { 
+        background-color: white !important; 
+        color: black !important; 
+        margin: 1.5cm !important;
+      }
       .hero-container, .app-header, .nav-tabs, footer, .header-actions { display: none !important; }
       #app { display: flex !important; }
       .main-content { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
@@ -719,7 +736,7 @@
             </tbody>
           </table>
           <div style="padding: 2px;"> 
-            <span style="color: green; font-size: 0.75rem;">&nbsp;Garantias mínimas de concentração definidas pela Instrução Normativa nº 39, de 08/08/2018, do Ministério da Agricultura e Pecuária.</span> 
+            <span style="color: var(--primary-color); font-size: 0.75rem;">&nbsp;Garantias mínimas de concentração definidas pela Instrução Normativa nº 39, de 08/08/2018, do Ministério da Agricultura e Pecuária.</span> 
           </div>
         </div>
       </section>
@@ -982,8 +999,7 @@
       if (navigator.share) {
         navigator.share({
           title: 'Relatório',
-          text: 'Confira os resultados de calagem e adubação gerados pelo FertAmapá.',
-          url: window.location.href
+          text: 'Confira os resultados de calagem e adubação gerados pelo FertAmapá.'
         }).catch(() => {});
       } else {
         alert("A função de compartilhamento não é suportada neste navegador.");
