@@ -1039,7 +1039,7 @@
         if (dose_n_cobertura > 0) {
           const samonio_cob = dose_n_cobertura / 0.20;
           const ureia_cob = dose_n_cobertura / 0.45;
-          notaElem.innerText = `Indicada adubação nitrogenada de cobertura (${formatNum(samonio_cob)} kg/ha de Sulfato de Amônio ou ${formatNum(ureia_cob)} kg/ha de Ureia), conforme recomendação técnica específica da cultura.`;
+          notaElem.innerText = `Indicada adubação nitrogenada de cobertura (${formatNum(samonio_cob)} kg/ha de Sulfato de Amônio ou ${formatNum(ureia_cob)} kg/ha de Ureia), conforme recomendação técnica específica da cultura. Quantidade já incluída nos cálculos de fertilizantes individualizados e formulação agrupada.`;
           notaElem.style.display = 'block';
         } else {
           notaElem.innerText = '';
