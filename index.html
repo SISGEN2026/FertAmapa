@@ -451,33 +451,34 @@
     <main class="main-content">
       <!-- ABA ANÁLISE DE SOLO -->
       <section id="tab-ANALISE" class="tab-content active">
-        <h2>Análise de Solo e Cultura Desejada</h2>
+        <h2>Análise de Solo (0 - 20 cm)</h2>
+        
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="cultura">Cultura Desejada:</label>
+          <select id="cultura" onchange="atualizarCultura()">
+            <option value="ABACAXI" selected>ABACAXI</option>
+            <option value="AÇAÍ">AÇAÍ</option>
+            <option value="BANANA">BANANA</option>
+            <option value="CACAU">CACAU</option>
+            <option value="CAFÉ CANÉFORA">CAFÉ CANÉFORA</option>
+            <option value="CITROS">CITROS</option>
+            <option value="COCO">COCO</option>
+            <option value="CUPUAÇU">CUPUAÇU</option>
+            <option value="FEIJÃO-CAUPI">FEIJÃO-CAUPI</option>
+            <option value="FORRAGEIRA">FORRAGEIRA</option>
+            <option value="MANDIOCA">MANDIOCA</option>
+            <option value="MARACUJÁ">MARACUJÁ</option>
+            <option value="MELANCIA">MELANCIA</option>
+            <option value="MILHO">MILHO</option>
+            <option value="PIMENTA-DO-REINO">PIMENTA-DO-REINO</option>
+            <option value="SOJA">SOJA</option>
+          </select>
+        </div>
         
         <div class="form-grid">
           <div class="side-bar-container">
             <div class="side-bar-label">CALAGEM</div>
             <div class="side-bar-content">
-              <div class="form-group">
-                <label for="cultura">Cultura Desejada:</label>
-                <select id="cultura" onchange="atualizarCultura()">
-                  <option value="ABACAXI" selected>ABACAXI</option>
-                  <option value="AÇAÍ">AÇAÍ</option>
-                  <option value="BANANA">BANANA</option>
-                  <option value="CACAU">CACAU</option>
-                  <option value="CAFÉ CANÉFORA">CAFÉ CANÉFORA</option>
-                  <option value="CITROS">CITROS</option>
-                  <option value="COCO">COCO</option>
-                  <option value="CUPUAÇU">CUPUAÇU</option>
-                  <option value="FEIJÃO-CAUPI">FEIJÃO-CAUPI</option>
-                  <option value="FORRAGEIRA">FORRAGEIRA</option>
-                  <option value="MANDIOCA">MANDIOCA</option>
-                  <option value="MARACUJÁ">MARACUJÁ</option>
-                  <option value="MELANCIA">MELANCIA</option>
-                  <option value="MILHO">MILHO</option>
-                  <option value="PIMENTA-DO-REINO">PIMENTA-DO-REINO</option>
-                  <option value="SOJA">SOJA</option>
-                </select>
-              </div>
               <div class="sub-group-title">1. Método Elevação da Saturação por Bases</div>
               <div class="form-group-row">
                 <div class="form-group">
@@ -529,7 +530,7 @@
             </div>
           </div>
           <div style="margin-top: 10px;">
-            <div class="section-title">🌱 Análise de Solo & Adubação Sugerida</div>
+           
           </div>
           <div class="side-bar-container">
             <div class="side-bar-label">FONTES MINERAIS</div>
@@ -568,17 +569,14 @@
           </div>
         </div>
       </section>
-
       <!-- ABA RELATÓRIO -->
       <section id="tab-RELATORIO" class="tab-content">
         <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Embrapa_-_Marca.png" alt="Marca Embrapa" style="width: 150px; height: auto; display: block; margin: 0 auto 20px auto;">
         <h2>Relatório Recomendado por Cultura</h2>
-
         <div class="form-group" style="margin-bottom: 20px;">
           <label for="relatorio_cultura">Cultura Desejada:</label>
           <input type="text" id="relatorio_cultura" value="ABACAXI" readonly style="font-weight: bold; color: var(--primary-color);">
         </div>
-
         <h3 style="margin-top: 20px; color: var(--primary-color);">Resultados da Calagem</h3>
         <div class="table-container">
           <table class="table-compact">
@@ -608,7 +606,6 @@
             </tbody>
           </table>
         </div>
-
         <h3 style="margin-top: 20px; color: var(--primary-color);">Resultados dos Fertilizantes Calculados Individualmente</h3>
         <div class="table-container">
           <table class="table-compact">
@@ -648,7 +645,6 @@
             </tbody>
           </table>
         </div>
-
         <h3 style="margin-top: 20px; color: var(--primary-color);">Formulação e Adubação Agrupada</h3>
         <div class="table-container">
           <table class="table-compact">
@@ -677,7 +673,6 @@
           </table>
         </div>
       </section>
-
       <!-- ABA INSUMOS -->
       <section id="tab-INSUMOS" class="tab-content">
         <h2>Preços de Mercado dos Insumos</h2>
@@ -728,7 +723,6 @@
           </div>
         </div>
       </section>
-
       <!-- ABA DIZERES -->
       <section id="tab-DIZERES" class="tab-content">
         <h2>Dizeres Técnicos e Recomendações</h2>
@@ -745,7 +739,6 @@
       <p style="margin: 0;">&copy; FertAmapá - <span id="data-footer">19/10/2026</span>.</p>
     </footer>
   </div>
-
   <script>
     const tabelaV2 = {
       "ABACAXI": 60,
@@ -820,7 +813,6 @@
       "PIMENTA-DO-REINO": { pEscala: ">20", kEscala: ">0.30", pMin: 20.01, pMax: Infinity, kMin: 0.301, kMax: Infinity, n: 130, p: 30, k: 30 },
       "SOJA": { pEscala: ">20", kEscala: ">0.30", pMin: 20.01, pMax: Infinity, kMin: 0.301, kMax: Infinity, n: 0, p: 30, k: 30 }
     };
-
     function parseVal(id) {
       const el = document.getElementById(id);
       if (!el) return 0;
@@ -892,13 +884,11 @@
       if (elemSat) elemSat.value = formatNum(nc_sat_comercial_kgha) + " kg/ha";
       const elemNeut = document.getElementById('nc_al_camg_kgha');
       if (elemNeut) elemNeut.value = formatNum(nc_neut_comercial_kgha) + " kg/ha";
-
       const nc_final_100_kgha = Math.max(nc_sat_100_kgha, nc_neut_100_kgha);
       const nc_final_comercial_kgha = Math.max(nc_sat_comercial_kgha, nc_neut_comercial_kgha);
       
       const preco_calcario = parseVal('preco_calcario');
       const custo_calcario = (nc_final_comercial_kgha) * preco_calcario;
-
       // Atualização da Tabela de Calagem
       const elemV2 = document.getElementById('res-v2');
       if (elemV2) elemV2.innerText = v2 + "%";
@@ -908,20 +898,16 @@
       if (elemNcPrnt) elemNcPrnt.innerText = formatNum(nc_final_comercial_kgha) + " kg/ha";
       const elemCustoCalc = document.getElementById('res-custo-calcario');
       if (elemCustoCalc) elemCustoCalc.innerText = "R$ " + formatMoeda(custo_calcario);
-
       // Análise de Solo e Recomendação
       const selCultura = document.getElementById('cultura').value;
       const soloP = parseVal('soloP'); // mg/dm3
       const soloK = parseVal('soloK'); // cmol_c/dm3
-
       // Busca do valor de N exclusivamente na TABELA NÍVEL BAIXO
       const dadosNivelBaixo = tabelaNivelBaixo[selCultura] || { n: 0, p: 0, k: 0 };
       const dose_n = dadosNivelBaixo.n;
-
       // Busca da recomendação de P2O5 com base na escala específica da cultura selecionada
       const pMaxBaixo = (tabelaNivelBaixo[selCultura] || {}).pMax || 10;
       const pMaxMedio = (tabelaNivelMedio[selCultura] || {}).pMax || 20;
-
       let dose_p2o5 = 0;
       if (soloP <= pMaxBaixo) {
         dose_p2o5 = (tabelaNivelBaixo[selCultura] || {}).p || 0;
@@ -930,11 +916,9 @@
       } else {
         dose_p2o5 = (tabelaNivelAlto[selCultura] || {}).p || 0;
       }
-
       // Busca da recomendação de K2O com base na escala específica da cultura selecionada
       const kMaxBaixo = (tabelaNivelBaixo[selCultura] || {}).kMax || 0.15;
       const kMaxMedio = (tabelaNivelMedio[selCultura] || {}).kMax || 0.30;
-
       let dose_k2o = 0;
       if (soloK <= kMaxBaixo) {
         dose_k2o = (tabelaNivelBaixo[selCultura] || {}).k || 0;
@@ -943,7 +927,6 @@
       } else {
         dose_k2o = (tabelaNivelAlto[selCultura] || {}).k || 0;
       }
-
       // Atualização dos campos da '2. Recomendação Teórica para a Cultura'
       const elemDoseN = document.getElementById('dose_n');
       if (elemDoseN) elemDoseN.value = dose_n;
@@ -951,14 +934,12 @@
       if (elemDoseP) elemDoseP.value = dose_p2o5;
       const elemDoseK = document.getElementById('dose_k2o');
       if (elemDoseK) elemDoseK.value = dose_k2o;
-
       // Cálculo dos Fertilizantes Individuais
       const samonio_peso = dose_n / 0.20;
       const ureia_peso = dose_n / 0.45;
       const sfs_peso = dose_p2o5 / 0.18;
       const sft_peso = dose_p2o5 / 0.41;
       const kcl_peso = dose_k2o / 0.50;
-
       document.getElementById('fc-samonio-peso').innerText = formatNum(samonio_peso) + " kg/ha";
       document.getElementById('fc-samonio-valor').innerText = "R$ " + formatMoeda(samonio_peso * parseVal('preco_samonio'));
       document.getElementById('fc-ureia-peso').innerText = formatNum(ureia_peso) + " kg/ha";
@@ -969,7 +950,6 @@
       document.getElementById('fc-sft-valor').innerText = "R$ " + formatMoeda(sft_peso * parseVal('preco_sft'));
       document.getElementById('fc-kcl-peso').innerText = formatNum(kcl_peso) + " kg/ha";
       document.getElementById('fc-kcl-valor').innerText = "R$ " + formatMoeda(kcl_peso * parseVal('preco_kcl'));
-
       // Formulação Agrupada
       const g1_total = samonio_peso + sft_peso + kcl_peso;
       const g2_total = ureia_peso + sfs_peso + kcl_peso;
@@ -1056,4 +1036,3 @@
   </script>
 </body>
 </html>
-
