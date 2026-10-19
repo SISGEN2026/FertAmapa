@@ -406,9 +406,9 @@
       <h1 class="hero-title">FertAmapá</h1>
       <p class="hero-subtitle">Sistema de Cálculos para Calagem e Adubação Mineral de NPK nas Condições do Amapá (Plantio/Semeio)</p>
       <div class="hero-buttons">
-        <button type="button" class="btn-square" id="btn-start-fert" onclick="openModule('FertAmapá')">
+        <button type="button" class="btn-square" id="btn-start-analise" onclick="openModule('ANALISE')">
           <svg viewBox="0 0 24 24"><path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M19,19H5V5H19V19M6.25,7.72H11.25V9.22H6.25V7.72M12.75,7.72H17.75V9.22H12.75V7.72M6.25,11.72H11.25V13.22H6.25V11.72M12.75,11.72H17.75V13.22H12.75V11.72M6.25,15.72H11.25V17.22H6.25V15.72M12.75,15.72H17.75V17.22H12.75V15.72Z"/></svg>
-          Calagem e Adubação
+          Análise de Solo
         </button>
         
         <button type="button" class="btn-square" id="btn-start-insumos" onclick="openModule('INSUMOS')">
@@ -443,15 +443,15 @@
       </div>
     </header>
     <nav class="nav-tabs">
-      <button type="button" class="tab-button active" onclick="switchTab('FertAmapá')">CÁLCULOS</button>
+      <button type="button" class="tab-button active" onclick="switchTab('ANALISE')">ANÁLISE DE SOLO</button>
+      <button type="button" class="tab-button" onclick="switchTab('RELATORIO')">RELATÓRIO</button>
       <button type="button" class="tab-button" onclick="switchTab('INSUMOS')">INSUMOS</button>
       <button type="button" class="tab-button" onclick="switchTab('DIZERES')">DIZERES TÉCNICOS</button>
     </nav>
     <main class="main-content">
-      <!-- ABA FertAmapá -->
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Embrapa_-_Marca.png" alt="Marca Embrapa" style="width: 150px; height: auto; display: block; margin: 0 auto 20px auto;">
-      <section id="tab-FertAmapá" class="tab-content active">
-        <h2>Calagem e Adubação Mineral por Cultura</h2>
+      <!-- ABA ANÁLISE DE SOLO -->
+      <section id="tab-ANALISE" class="tab-content active">
+        <h2>Análise de Solo e Cultura Desejada</h2>
         
         <div class="form-grid">
           <div class="side-bar-container">
@@ -476,7 +476,7 @@
                   <option value="MILHO">MILHO</option>
                   <option value="PIMENTA-DO-REINO">PIMENTA-DO-REINO</option>
                   <option value="SOJA">SOJA</option>
-              </select>
+                </select>
               </div>
               <div class="sub-group-title">1. Método Elevação da Saturação por Bases</div>
               <div class="form-group-row">
@@ -567,6 +567,18 @@
             </div>
           </div>
         </div>
+      </section>
+
+      <!-- ABA RELATÓRIO -->
+      <section id="tab-RELATORIO" class="tab-content">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Embrapa_-_Marca.png" alt="Marca Embrapa" style="width: 150px; height: auto; display: block; margin: 0 auto 20px auto;">
+        <h2>Relatório Recomendado por Cultura</h2>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label for="relatorio_cultura">Cultura Desejada:</label>
+          <input type="text" id="relatorio_cultura" value="ABACAXI" readonly style="font-weight: bold; color: var(--primary-color);">
+        </div>
+
         <h3 style="margin-top: 20px; color: var(--primary-color);">Resultados da Calagem</h3>
         <div class="table-container">
           <table class="table-compact">
@@ -583,7 +595,7 @@
                 <td id="res-v2">60%</td>
                 <td>-</td>
               </tr>
-              <tr>
+              <tr style="display: none;">
                 <td>Necessidade de Calcário (PRNT 100%)</td>
                 <td id="res-nc100">0.00 kg/ha</td>
                 <td>-</td>
@@ -596,6 +608,7 @@
             </tbody>
           </table>
         </div>
+
         <h3 style="margin-top: 20px; color: var(--primary-color);">Resultados dos Fertilizantes Calculados Individualmente</h3>
         <div class="table-container">
           <table class="table-compact">
@@ -635,6 +648,7 @@
             </tbody>
           </table>
         </div>
+
         <h3 style="margin-top: 20px; color: var(--primary-color);">Formulação e Adubação Agrupada</h3>
         <div class="table-container">
           <table class="table-compact">
@@ -663,56 +677,58 @@
           </table>
         </div>
       </section>
-     <!-- ABA INSUMOS -->
-<section id="tab-INSUMOS" class="tab-content">
-  <h2>Preços de Mercado dos Insumos</h2>
-  <div class="table-container">
-    <table class="table-compact">
-      <thead>
-        <tr>
-          <th>Insumo</th>
-          <th>Especificação</th>
-          <th>Preço / kg (R$)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Calcário</td>
-          <td>PRNT</td>
-          <td><input type="number" class="input-table-price" id="preco_calcario" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
-        </tr>
-        <tr>
-          <td>Sulfato de Amônio</td>
-          <td>20% N, 22% S</td>
-          <td><input type="number" class="input-table-price" id="preco_samonio" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
-        </tr>
-        <tr>
-          <td>Ureia</td>
-          <td>45% N</td>
-          <td><input type="number" class="input-table-price" id="preco_ureia" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
-        </tr>
-        <tr>
-          <td>Superfosfato Simples</td>
-          <td>18% P₂O₅, 16% Ca, 10% S</td>
-          <td><input type="number" class="input-table-price" id="preco_sfs" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
-        </tr>
-        <tr>
-          <td>Superfosfato Triplo</td>
-          <td>41% P₂O₅, 10% Ca</td>
-          <td><input type="number" class="input-table-price" id="preco_sft" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
-        </tr>
-        <tr>
-          <td>Cloreto de Potássio</td>
-          <td>50% K₂O</td>
-          <td><input type="number" class="input-table-price" id="preco_kcl" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
-        </tr>
-      </tbody>
-    </table>
-<div style="padding: 2px;"> 
-    <span style="color: green; font-size: 0.75rem;">&nbsp;Garantias mínimas de concentração definidas pela Instrução Normativa nº 39, de 08/08/2018, do Ministério da Agricultura e Pecuária.</span> 
-</div>
-</div>
-</section>
+
+      <!-- ABA INSUMOS -->
+      <section id="tab-INSUMOS" class="tab-content">
+        <h2>Preços de Mercado dos Insumos</h2>
+        <div class="table-container">
+          <table class="table-compact">
+            <thead>
+              <tr>
+                <th>Insumo</th>
+                <th>Especificação</th>
+                <th>Preço / kg (R$)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Calcário</td>
+                <td>PRNT</td>
+                <td><input type="number" class="input-table-price" id="preco_calcario" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
+              </tr>
+              <tr>
+                <td>Sulfato de Amônio</td>
+                <td>20% N, 22% S</td>
+                <td><input type="number" class="input-table-price" id="preco_samonio" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
+              </tr>
+              <tr>
+                <td>Ureia</td>
+                <td>45% N</td>
+                <td><input type="number" class="input-table-price" id="preco_ureia" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
+              </tr>
+              <tr>
+                <td>Superfosfato Simples</td>
+                <td>18% P₂O₅, 16% Ca, 10% S</td>
+                <td><input type="number" class="input-table-price" id="preco_sfs" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
+              </tr>
+              <tr>
+                <td>Superfosfato Triplo</td>
+                <td>41% P₂O₅, 10% Ca</td>
+                <td><input type="number" class="input-table-price" id="preco_sft" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
+              </tr>
+              <tr>
+                <td>Cloreto de Potássio</td>
+                <td>50% K₂O</td>
+                <td><input type="number" class="input-table-price" id="preco_kcl" placeholder="" step="0.01" oninput="salvarEcalcular()"></td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="padding: 2px;"> 
+            <span style="color: green; font-size: 0.75rem;">&nbsp;Garantias mínimas de concentração definidas pela Instrução Normativa nº 39, de 08/08/2018, do Ministério da Agricultura e Pecuária.</span> 
+          </div>
+        </div>
+      </section>
+
       <!-- ABA DIZERES -->
       <section id="tab-DIZERES" class="tab-content">
         <h2>Dizeres Técnicos e Recomendações</h2>
@@ -722,12 +738,14 @@
           <p>📌 <strong>Parcelamento:</strong> Fertilizantes nitrogenados e potássicos devem ser parcelados durante o ano, conforme recomendação técnica específica da cultura.</p>
           <p>📌 <strong>Aplicação de Fósforo:</strong> Fertilizantes fosfatados devem ser aplicados em dose única por ocasião do plantio/semeadura.</p>
           <p>📌 <strong>Fator de Incorporação do Calcário:</strong> Para a aplicação superficial ou incorporada até 20 cm de profundidade — método observado nestes cálculos —, utiliza-se o valor 1,0. Nos casos em que a incorporação for feita de 20 a 30 cm, o valor deve ser multiplicado por 1,5.</p>
+        </div>
       </section>
     </main>
     <footer style="position: fixed; bottom: 0; left: 0; width: 100%; text-align: center; font-size: 0.75rem; background-color: #ffffff; padding: 5px 0; z-index: 1000; box-shadow: 0 -2px 5px rgba(0,0,0,0.05);">
-      <p style="margin: 0;">&copy; Embrapa 2026.</p>
+      <p style="margin: 0;">&copy; FertAmapá - <span id="data-footer">19/10/2026</span>.</p>
     </footer>
   </div>
+
   <script>
     const tabelaV2 = {
       "ABACAXI": 60,
@@ -802,6 +820,7 @@
       "PIMENTA-DO-REINO": { pEscala: ">20", kEscala: ">0.30", pMin: 20.01, pMax: Infinity, kMin: 0.301, kMax: Infinity, n: 130, p: 30, k: 30 },
       "SOJA": { pEscala: ">20", kEscala: ">0.30", pMin: 20.01, pMax: Infinity, kMin: 0.301, kMax: Infinity, n: 0, p: 30, k: 30 }
     };
+
     function parseVal(id) {
       const el = document.getElementById(id);
       if (!el) return 0;
@@ -818,6 +837,10 @@
       const v2 = tabelaV2[sel];
       if (v2 !== undefined) {
         document.getElementById('v2_input').value = v2 + "%";
+      }
+      const relCultura = document.getElementById('relatorio_cultura');
+      if (relCultura) {
+        relCultura.value = sel;
       }
       calcular();
     }
@@ -864,22 +887,33 @@
       if (nc_neut_100_tha < 0) nc_neut_100_tha = 0;
       const nc_neut_100_kgha = nc_neut_100_tha * 1000;
       const nc_neut_comercial_kgha = nc_neut_100_kgha * (100 / prnt);
-      document.getElementById('nc_sat_bases_kgha').value = formatNum(nc_sat_comercial_kgha) + " kg/ha";
-      document.getElementById('nc_al_camg_kgha').value = formatNum(nc_neut_comercial_kgha) + " kg/ha";
+      
+      const elemSat = document.getElementById('nc_sat_bases_kgha');
+      if (elemSat) elemSat.value = formatNum(nc_sat_comercial_kgha) + " kg/ha";
+      const elemNeut = document.getElementById('nc_al_camg_kgha');
+      if (elemNeut) elemNeut.value = formatNum(nc_neut_comercial_kgha) + " kg/ha";
+
       const nc_final_100_kgha = Math.max(nc_sat_100_kgha, nc_neut_100_kgha);
       const nc_final_comercial_kgha = Math.max(nc_sat_comercial_kgha, nc_neut_comercial_kgha);
       
       const preco_calcario = parseVal('preco_calcario');
       const custo_calcario = (nc_final_comercial_kgha) * preco_calcario;
+
       // Atualização da Tabela de Calagem
-      document.getElementById('res-v2').innerText = v2 + "%";
-      document.getElementById('res-nc100').innerText = formatNum(nc_final_100_kgha) + " kg/ha";
-      document.getElementById('res-ncprnt').innerText = formatNum(nc_final_comercial_kgha) + " kg/ha";
-      document.getElementById('res-custo-calcario').innerText = "R$ " + formatMoeda(custo_calcario);
+      const elemV2 = document.getElementById('res-v2');
+      if (elemV2) elemV2.innerText = v2 + "%";
+      const elemNc100 = document.getElementById('res-nc100');
+      if (elemNc100) elemNc100.innerText = formatNum(nc_final_100_kgha) + " kg/ha";
+      const elemNcPrnt = document.getElementById('res-ncprnt');
+      if (elemNcPrnt) elemNcPrnt.innerText = formatNum(nc_final_comercial_kgha) + " kg/ha";
+      const elemCustoCalc = document.getElementById('res-custo-calcario');
+      if (elemCustoCalc) elemCustoCalc.innerText = "R$ " + formatMoeda(custo_calcario);
+
       // Análise de Solo e Recomendação
       const selCultura = document.getElementById('cultura').value;
       const soloP = parseVal('soloP'); // mg/dm3
       const soloK = parseVal('soloK'); // cmol_c/dm3
+
       // Busca do valor de N exclusivamente na TABELA NÍVEL BAIXO
       const dadosNivelBaixo = tabelaNivelBaixo[selCultura] || { n: 0, p: 0, k: 0 };
       const dose_n = dadosNivelBaixo.n;
@@ -911,15 +945,20 @@
       }
 
       // Atualização dos campos da '2. Recomendação Teórica para a Cultura'
-      document.getElementById('dose_n').value = dose_n;
-      document.getElementById('dose_p2o5').value = dose_p2o5;
-      document.getElementById('dose_k2o').value = dose_k2o;
+      const elemDoseN = document.getElementById('dose_n');
+      if (elemDoseN) elemDoseN.value = dose_n;
+      const elemDoseP = document.getElementById('dose_p2o5');
+      if (elemDoseP) elemDoseP.value = dose_p2o5;
+      const elemDoseK = document.getElementById('dose_k2o');
+      if (elemDoseK) elemDoseK.value = dose_k2o;
+
       // Cálculo dos Fertilizantes Individuais
       const samonio_peso = dose_n / 0.20;
       const ureia_peso = dose_n / 0.45;
       const sfs_peso = dose_p2o5 / 0.18;
       const sft_peso = dose_p2o5 / 0.41;
       const kcl_peso = dose_k2o / 0.50;
+
       document.getElementById('fc-samonio-peso').innerText = formatNum(samonio_peso) + " kg/ha";
       document.getElementById('fc-samonio-valor').innerText = "R$ " + formatMoeda(samonio_peso * parseVal('preco_samonio'));
       document.getElementById('fc-ureia-peso').innerText = formatNum(ureia_peso) + " kg/ha";
@@ -930,6 +969,7 @@
       document.getElementById('fc-sft-valor').innerText = "R$ " + formatMoeda(sft_peso * parseVal('preco_sft'));
       document.getElementById('fc-kcl-peso').innerText = formatNum(kcl_peso) + " kg/ha";
       document.getElementById('fc-kcl-valor').innerText = "R$ " + formatMoeda(kcl_peso * parseVal('preco_kcl'));
+
       // Formulação Agrupada
       const g1_total = samonio_peso + sft_peso + kcl_peso;
       const g2_total = ureia_peso + sfs_peso + kcl_peso;
@@ -998,9 +1038,20 @@
       salvarPrecos();
       calcular();
     }
+    function atualizarDataFooter() {
+      const elemData = document.getElementById('data-footer');
+      if (elemData) {
+        const hoje = new Date();
+        const dia = String(hoje.getDate()).padStart(2, '0');
+        const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+        const ano = hoje.getFullYear();
+        elemData.innerText = `${dia}/${mes}/${ano}`;
+      }
+    }
     window.onload = function() {
       carregarPrecos();
       atualizarCultura();
+      atualizarDataFooter();
     };
   </script>
 </body>
