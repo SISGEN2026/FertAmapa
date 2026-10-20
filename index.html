@@ -1017,10 +1017,11 @@
       const kcl_plantio = dose_k2o_plantio / 0.50;
       const kcl_cob = dose_k2o_cobertura / 0.50;
       
-      const culturasSemeio = ["FEIJÃO-CAUPI", "FORRAGEIRA", "MELANCIA", "MILHO", "SOJA"];
-      const rotuloEtapa = culturasSemeio.includes(selCultura) ? "Semeio:" : "Plantio:";
-
-      if (dose_n_cobertura > 0) {
+      const culturasSemeio = ["FEIJÃO-CAUPI", "MELANCIA", "MILHO", "SOJA"];
+      const culturasPlantioSemeio = ["FORRAGEIRA"];
+      const rotuloEtapa = culturasSemeio.includes(selCultura) ? "Semeio:" : "Plantio/Semeio" : "Plantio:";
+      
+        if (dose_n_cobertura > 0) {
         document.getElementById('fc-samonio-peso').innerHTML = `${formatNum(samonio_peso)} kg/ha<br><span style="font-size:0.68rem; color:#555; font-weight:normal;">${rotuloEtapa} ${formatNum(samonio_plantio)} kg/ha<br>Cobertura: ${formatNum(samonio_cob)} kg/ha</span>`;
         document.getElementById('fc-ureia-peso').innerHTML = `${formatNum(ureia_peso)} kg/ha<br><span style="font-size:0.68rem; color:#555; font-weight:normal;">${rotuloEtapa} ${formatNum(ureia_plantio)} kg/ha<br>Cobertura: ${formatNum(ureia_cob)} kg/ha</span>`;
       } else {
