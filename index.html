@@ -1010,9 +1010,13 @@
       const sfs_peso = dose_p2o5 / 0.18;
       const sft_peso = dose_p2o5 / 0.41;
       const kcl_peso = dose_k2o / 0.50;
+      
+      const culturasSemeio = ["FEIJÃO-CAUPI", "FORRAGEIRA", "MELANCIA", "MILHO", "SOJA"];
+      const rotuloEtapa = culturasSemeio.includes(selCultura) ? "Semeio:" : "Plantio:";
+
       if (dose_n_cobertura > 0) {
-        document.getElementById('fc-samonio-peso').innerHTML = `${formatNum(samonio_peso)} kg/ha<br><span style="font-size:0.68rem; color:#555; font-weight:normal;">Plantio/Semeio: ${formatNum(samonio_plantio)} kg/ha<br>Cobertura: ${formatNum(samonio_cob)} kg/ha</span>`;
-        document.getElementById('fc-ureia-peso').innerHTML = `${formatNum(ureia_peso)} kg/ha<br><span style="font-size:0.68rem; color:#555; font-weight:normal;">Plantio/Semeio: ${formatNum(ureia_plantio)} kg/ha<br>Cobertura: ${formatNum(ureia_cob)} kg/ha</span>`;
+        document.getElementById('fc-samonio-peso').innerHTML = `${formatNum(samonio_peso)} kg/ha<br><span style="font-size:0.68rem; color:#555; font-weight:normal;">${rotuloEtapa} ${formatNum(samonio_plantio)} kg/ha<br>Cobertura: ${formatNum(samonio_cob)} kg/ha</span>`;
+        document.getElementById('fc-ureia-peso').innerHTML = `${formatNum(ureia_peso)} kg/ha<br><span style="font-size:0.68rem; color:#555; font-weight:normal;">${rotuloEtapa} ${formatNum(ureia_plantio)} kg/ha<br>Cobertura: ${formatNum(ureia_cob)} kg/ha</span>`;
       } else {
         document.getElementById('fc-samonio-peso').innerText = formatNum(samonio_peso) + " kg/ha";
         document.getElementById('fc-ureia-peso').innerText = formatNum(ureia_peso) + " kg/ha";
