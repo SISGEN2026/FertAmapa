@@ -990,14 +990,23 @@
       
       // Cálculo dos Fertilizantes Individuais (baseado no N total = n + nCobertura)
       const samonio_peso = dose_n / 0.20;
+      const samonio_plantio = dose_n_plantio / 0.20;
+      const samonio_cob = dose_n_cobertura / 0.20;
+
       const ureia_peso = dose_n / 0.45;
+      const ureia_plantio = dose_n_plantio / 0.45;
+      const ureia_cob = dose_n_cobertura / 0.45;
+
       const sfs_peso = dose_p2o5 / 0.18;
       const sft_peso = dose_p2o5 / 0.41;
       const kcl_peso = dose_k2o / 0.50;
-      document.getElementById('fc-samonio-peso').innerText = formatNum(samonio_peso) + " kg/ha";
+
+      document.getElementById('fc-samonio-peso').innerHTML = `${formatNum(samonio_peso)} kg/ha<br><span style="font-size:0.72rem; color:#555; font-weight:normal;">Plantio: ${formatNum(samonio_plantio)} kg/ha<br>Cobertura: ${formatNum(samonio_cob)} kg/ha</span>`;
       document.getElementById('fc-samonio-valor').innerText = "R$ " + formatMoeda(samonio_peso * parseVal('preco_samonio'));
-      document.getElementById('fc-ureia-peso').innerText = formatNum(ureia_peso) + " kg/ha";
+
+      document.getElementById('fc-ureia-peso').innerHTML = `${formatNum(ureia_peso)} kg/ha<br><span style="font-size:0.72rem; color:#555; font-weight:normal;">Plantio: ${formatNum(ureia_plantio)} kg/ha<br>Cobertura: ${formatNum(ureia_cob)} kg/ha</span>`;
       document.getElementById('fc-ureia-valor').innerText = "R$ " + formatMoeda(ureia_peso * parseVal('preco_ureia'));
+
       document.getElementById('fc-sfs-peso').innerText = formatNum(sfs_peso) + " kg/ha";
       document.getElementById('fc-sfs-valor').innerText = "R$ " + formatMoeda(sfs_peso * parseVal('preco_sfs'));
       document.getElementById('fc-sft-peso').innerText = formatNum(sft_peso) + " kg/ha";
@@ -1033,13 +1042,11 @@
         document.getElementById('g2-custo').innerText = "R$ 0,00";
       }
 
-      // Exibição do Texto Informativo de Adubação de Cobertura no Rodapé da Formulação Agrupada
+      // Exibição do Texto Informativo no Rodapé da Formulação Agrupada
       const notaElem = document.getElementById('nota-cobertura');
       if (notaElem) {
         if (dose_n_cobertura > 0) {
-          const samonio_cob = dose_n_cobertura / 0.20;
-          const ureia_cob = dose_n_cobertura / 0.45;
-          notaElem.innerText = `Indicada adubação nitrogenada de cobertura (${formatNum(samonio_cob)} kg/ha de Sulfato de Amônio ou ${formatNum(ureia_cob)} kg/ha de Ureia), conforme recomendação técnica específica da cultura. Quantidade já incluída nos cálculos de fertilizantes individualizados e formulação agrupada.`;
+          notaElem.innerText = "Para maiores informações consultar os Dizeres Técnicos.";
           notaElem.style.display = 'block';
         } else {
           notaElem.innerText = '';
