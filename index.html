@@ -1018,8 +1018,9 @@
       const kcl_cob = dose_k2o_cobertura / 0.50;
       
       const culturasSemeio = ["FEIJÃO-CAUPI", "MELANCIA", "MILHO", "SOJA"];
+      const rotuloEtapa = culturasSemeio.includes(selCultura) ? "Semeio:" : "Plantio:" : "Plantio/Semeio";
       const culturasPlantioSemeio = ["FORRAGEIRA"];
-      const rotuloEtapa = culturasSemeio.includes(selCultura) ? "Semeio:" : "Plantio/Semeio" : "Plantio:";
+      const rotuloEtapa = culturasPlantioSemeio.includes(selCultura) ? "Plantio/Semeio" : "Semeio:" : "Plantio:";
       
         if (dose_n_cobertura > 0) {
         document.getElementById('fc-samonio-peso').innerHTML = `${formatNum(samonio_peso)} kg/ha<br><span style="font-size:0.68rem; color:#555; font-weight:normal;">${rotuloEtapa} ${formatNum(samonio_plantio)} kg/ha<br>Cobertura: ${formatNum(samonio_cob)} kg/ha</span>`;
