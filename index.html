@@ -618,7 +618,7 @@
         </div>
         <!-- Botão ao final do formulário direcionado para a aba RELATÓRIO -->
         <div style="margin-top: 20px; text-align: center;">
-          <button type="button" onclick="switchTab('RELATORIO')" style="background-color: var(--primary-color); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: background-color 0.2s ease;">
+          <button type="button" onclick="switchTab('RELATORIO'); window.scrollTo(0, 0);" style="background-color: var(--primary-color); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: background-color 0.2s ease;">
             <svg viewBox="0 0 24 24" style="width:18px; height:18px; fill:white;"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M8,12V14H16V12H8M8,16V18H13V16H8Z"/></svg>
             Gerar Relatório
           </button>
@@ -1005,7 +1005,6 @@
       const sfs_peso = dose_p2o5 / 0.18;
       const sft_peso = dose_p2o5 / 0.41;
       const kcl_peso = dose_k2o / 0.50;
-
       if (dose_n_cobertura > 0) {
         document.getElementById('fc-samonio-peso').innerHTML = `${formatNum(samonio_peso)} kg/ha<br><span style="font-size:0.68rem; color:#555; font-weight:normal;">Plantio: ${formatNum(samonio_plantio)} kg/ha<br>Cobertura: ${formatNum(samonio_cob)} kg/ha</span>`;
         document.getElementById('fc-ureia-peso').innerHTML = `${formatNum(ureia_peso)} kg/ha<br><span style="font-size:0.68rem; color:#555; font-weight:normal;">Plantio: ${formatNum(ureia_plantio)} kg/ha<br>Cobertura: ${formatNum(ureia_cob)} kg/ha</span>`;
@@ -1013,7 +1012,6 @@
         document.getElementById('fc-samonio-peso').innerText = formatNum(samonio_peso) + " kg/ha";
         document.getElementById('fc-ureia-peso').innerText = formatNum(ureia_peso) + " kg/ha";
       }
-
       document.getElementById('fc-samonio-valor').innerText = "R$ " + formatMoeda(samonio_peso * parseVal('preco_samonio'));
       document.getElementById('fc-ureia-valor').innerText = "R$ " + formatMoeda(ureia_peso * parseVal('preco_ureia'));
       document.getElementById('fc-sfs-peso').innerText = formatNum(sfs_peso) + " kg/ha";
@@ -1050,17 +1048,11 @@
         document.getElementById('g2-qtd').innerText = "0.00 kg/ha";
         document.getElementById('g2-custo').innerText = "R$ 0,00";
       }
-
-      // Exibição do Texto Informativo no Rodapé da Formulação Agrupada
+      // Exibição do Texto Informativo no Rodapé da Formulação Agrupada (para todas as culturas)
       const notaElem = document.getElementById('nota-cobertura');
       if (notaElem) {
-        if (dose_n_cobertura > 0) {
-          notaElem.innerText = "Para maiores informações consultar os Dizeres Técnicos.";
-          notaElem.style.display = 'block';
-        } else {
-          notaElem.innerText = '';
-          notaElem.style.display = 'none';
-        }
+        notaElem.innerText = "Para maiores informações consultar os Dizeres Técnicos.";
+        notaElem.style.display = 'block';
       }
     }
     function compartilharRelatorio() {
